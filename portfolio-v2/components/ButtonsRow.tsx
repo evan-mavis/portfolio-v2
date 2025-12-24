@@ -20,7 +20,7 @@ export default function ButtonsRow({
         pressed={isExpanded}
         onPressedChange={onExpandedChange}
       >
-        {isExpanded ? <Expand /> : <Minimize />}
+        {isExpanded ? <Minimize /> : <Expand />}
       </Toggle>
       <ThemeToggle />
     </>
