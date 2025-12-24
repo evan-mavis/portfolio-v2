@@ -201,9 +201,10 @@ TreeIndicator.displayName = "TreeIndicator";
 
 type FolderProps = {
   expandedItems?: string[];
-  element: string;
+  element: string | React.ReactNode;
   isSelectable?: boolean;
   isSelect?: boolean;
+  inlineContent?: React.ReactNode;
 } & React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>;
 
 const Folder = ({
@@ -213,6 +214,7 @@ const Folder = ({
   isSelectable = true,
   isSelect,
   children,
+  inlineContent,
   ...props
 }: FolderProps & React.HTMLAttributes<HTMLDivElement>) => {
   const {
@@ -248,6 +250,7 @@ const Folder = ({
           ? openIcon ?? <FolderOpenIcon className="w-[1em] h-[1em]" />
           : closeIcon ?? <FolderIcon className="w-[1em] h-[1em]" />}
         <span>{element}</span>
+        {inlineContent}
       </AccordionPrimitive.Trigger>
       <AccordionPrimitive.Content className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative h-full overflow-hidden text-base">
         {element && indicator && <TreeIndicator aria-hidden="true" />}
