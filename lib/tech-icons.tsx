@@ -10,18 +10,15 @@ export function getTechIcon(techName: string): React.ReactNode {
     // Tech stack
     postgres: <Icon icon="simple-icons:postgresql" className={iconClass} />,
     azure: <Icon icon="simple-icons:azure" className={iconClass} />,
-    nextjs: <Icon icon="devicon:nextjs" className={iconClass} />,
+    nextjs: <Icon icon="file-icons:nextjs" className={iconClass} />,
     typescript: <Icon icon="simple-icons:typescript" className={iconClass} />,
-    shadcn: (
-      <Icon icon="vscode-icons:file-type-light-shadcn" className={iconClass} />
-    ),
+    shadcn: <Icon icon="simple-icons:shadcnui" className={iconClass} />,
     tailwind: <Icon icon="simple-icons:tailwindcss" className={iconClass} />,
     drizzle: <Icon icon="simple-icons:drizzle" className={iconClass} />,
     neon: (
       <Icon
-        icon="logos:neon-icon"
+        icon="material-symbols-light:database-outline"
         className={iconClass}
-        style={{ filter: "brightness(0)" }}
       />
     ),
     vercel: <Icon icon="simple-icons:vercel" className={iconClass} />,
