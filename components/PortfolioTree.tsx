@@ -87,7 +87,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
       style={{ minWidth: minWidth ? `${minWidth}px` : undefined }}
     >
       <Tree
-        className="w-auto h-auto text-foreground dark:text-[#ffd48a]"
+        className="w-auto h-auto text-foreground dark:text-[#ffd48a] text-base lg:text-lg"
         initialExpandedItems={
           isExpanded
             ? allFolderValues
@@ -123,7 +123,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                 </>
               }
               value="evan-mavis"
-              className="text-3xl"
+              className="text-3xl lg:text-4xl"
             >
               <Folder
                 element={
@@ -136,66 +136,147 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   </span>
                 }
                 value="full-stack-web-developer"
-                className="text-xl md:text-lg [&>button]:gap-2 md:[&>button]:gap-1"
+                className="text-xl lg:text-2xl [&>button]:gap-2 md:[&>button]:gap-1"
               >
-                <Folder element="my tech stack/" value="my-tech-stack">
-                  <File value="next.js" fileIcon={getTechIcon("nextjs")}>
+                <Folder
+                  element="my tech stack/"
+                  value="my-tech-stack"
+                  className="lg:text-lg"
+                >
+                  <File
+                    value="next.js"
+                    fileIcon={getTechIcon("nextjs")}
+                    className="lg:text-lg"
+                  >
                     next.js
                   </File>
-                  <File value="react" fileIcon={getTechIcon("react")}>
+                  <File
+                    value="react"
+                    fileIcon={getTechIcon("react")}
+                    className="lg:text-lg"
+                  >
                     react
                   </File>
-                  <File value="typescript" fileIcon={getTechIcon("typescript")}>
+                  <File
+                    value="typescript"
+                    fileIcon={getTechIcon("typescript")}
+                    className="lg:text-lg"
+                  >
                     typescript
                   </File>
-                  <File value="shadcn" fileIcon={getTechIcon("shadcn")}>
+                  <File
+                    value="shadcn"
+                    fileIcon={getTechIcon("shadcn")}
+                    className="lg:text-lg"
+                  >
                     shadcn
                   </File>
-                  <File value="tailwind" fileIcon={getTechIcon("tailwind")}>
+                  <File
+                    value="tailwind"
+                    fileIcon={getTechIcon("tailwind")}
+                    className="lg:text-lg"
+                  >
                     tailwind
                   </File>
-                  <File value="express" fileIcon={getTechIcon("express")}>
+                  <File
+                    value="express"
+                    fileIcon={getTechIcon("express")}
+                    className="lg:text-lg"
+                  >
                     express
                   </File>
-                  <File value="drizzle" fileIcon={getTechIcon("drizzle")}>
+                  <File
+                    value="drizzle"
+                    fileIcon={getTechIcon("drizzle")}
+                    className="lg:text-lg"
+                  >
                     drizzle
                   </File>
-                  <File value="postgres" fileIcon={getTechIcon("postgres")}>
+                  <File
+                    value="postgres"
+                    fileIcon={getTechIcon("postgres")}
+                    className="lg:text-lg"
+                  >
                     postgres
                   </File>
-                  <File value="neon" fileIcon={getTechIcon("neon")}>
+                  <File
+                    value="neon"
+                    fileIcon={getTechIcon("neon")}
+                    className="lg:text-lg"
+                  >
                     neon
                   </File>
-                  <File value="vercel" fileIcon={getTechIcon("vercel")}>
+                  <File
+                    value="vercel"
+                    fileIcon={getTechIcon("vercel")}
+                    className="lg:text-lg"
+                  >
                     vercel
                   </File>
-                  <File value="betterauth" fileIcon={getTechIcon("betterauth")}>
+                  <File
+                    value="betterauth"
+                    fileIcon={getTechIcon("betterauth")}
+                    className="lg:text-lg"
+                  >
                     betterauth
                   </File>
-                  <File value="github" fileIcon={getTechIcon("github")}>
+                  <File
+                    value="github"
+                    fileIcon={getTechIcon("github")}
+                    className="lg:text-lg"
+                  >
                     github
                   </File>
                 </Folder>
 
-                <Folder element="other tech/" value="other-tech">
-                  <Folder element="tooling/" value="tooling">
-                    <File value="github" fileIcon={getTechIcon("github")}>
+                <Folder
+                  element="other tech/"
+                  value="other-tech"
+                  className="lg:text-lg"
+                >
+                  <Folder
+                    element="tooling/"
+                    value="tooling"
+                    className="lg:text-lg"
+                  >
+                    <File
+                      value="github"
+                      fileIcon={getTechIcon("github")}
+                      className="lg:text-lg"
+                    >
                       github
                     </File>
-                    <File value="git" fileIcon={getTechIcon("git")}>
+                    <File
+                      value="git"
+                      fileIcon={getTechIcon("git")}
+                      className="lg:text-lg"
+                    >
                       git
                     </File>
-                    <File value="cursor" fileIcon={getTechIcon("cursor")}>
+                    <File
+                      value="cursor"
+                      fileIcon={getTechIcon("cursor")}
+                      className="lg:text-lg"
+                    >
                       cursor
                     </File>
                   </Folder>
-                  <Folder element="productivity/" value="productivity">
-                    <File value="obsidian" fileIcon={getTechIcon("obsidian")}>
+                  <Folder
+                    element="productivity/"
+                    value="productivity"
+                    className="lg:text-lg"
+                  >
+                    <File
+                      value="obsidian"
+                      fileIcon={getTechIcon("obsidian")}
+                      className="lg:text-lg"
+                    >
                       obsidian
                     </File>
                     <File
                       value="excalidraw"
                       fileIcon={getTechIcon("excalidraw")}
+                      className="lg:text-lg"
                     >
                       excalidraw
                     </File>
@@ -203,21 +284,35 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <Folder
                     element="favorite languages/"
                     value="favorite-languages"
+                    className="lg:text-lg"
                   >
-                    <File value="python" fileIcon={getTechIcon("python")}>
+                    <File
+                      value="python"
+                      fileIcon={getTechIcon("python")}
+                      className="lg:text-lg"
+                    >
                       python
                     </File>
                     <File
                       value="typescript"
                       fileIcon={getTechIcon("typescript")}
+                      className="lg:text-lg"
                     >
                       typescript
                     </File>
                   </Folder>
                 </Folder>
 
-                <Folder element="projects/" value="projects">
-                  <File value="wishswipe" fileIcon={getTechIcon("wishswipe")}>
+                <Folder
+                  element="projects/"
+                  value="projects"
+                  className="lg:text-lg"
+                >
+                  <File
+                    value="wishswipe"
+                    fileIcon={getTechIcon("wishswipe")}
+                    className="lg:text-lg"
+                  >
                     <a
                       href="https://wishswipe.app/login"
                       target="_blank"
@@ -228,7 +323,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                       wishswipe
                     </a>
                   </File>
-                  <File value="chain-log" fileIcon={getTechIcon("chainlog")}>
+                  <File
+                    value="chain-log"
+                    fileIcon={getTechIcon("chainlog")}
+                    className="lg:text-lg"
+                  >
                     <a
                       href="https://chain-log.app"
                       target="_blank"
@@ -241,8 +340,16 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   </File>
                 </Folder>
 
-                <Folder element="interesting stuff/" value="interesting-stuff">
-                  <File value="travel" fileIcon={getTechIcon("travel")}>
+                <Folder
+                  element="interesting stuff/"
+                  value="interesting-stuff"
+                  className="lg:text-lg"
+                >
+                  <File
+                    value="travel"
+                    fileIcon={getTechIcon("travel")}
+                    className="lg:text-lg"
+                  >
                     <Link
                       href="/travel"
                       className="text-primary hover:underline"
@@ -251,7 +358,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                       travel
                     </Link>
                   </File>
-                  <File value="food" fileIcon={getTechIcon("food")}>
+                  <File
+                    value="food"
+                    fileIcon={getTechIcon("food")}
+                    className="lg:text-lg"
+                  >
                     <Link
                       href="/food"
                       className="text-primary hover:underline"
@@ -262,7 +373,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   </File>
                 </Folder>
 
-                <File value="resume" fileIcon={getTechIcon("resume")}>
+                <File
+                  value="resume"
+                  fileIcon={getTechIcon("resume")}
+                  className="lg:text-lg"
+                >
                   <a
                     href="/evan-mavis-resume.pdf"
                     download="evan-mavis-resume.pdf"
@@ -272,7 +387,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                     resume
                   </a>
                 </File>
-                <File value="linkedin" fileIcon={getTechIcon("linkedin")}>
+                <File
+                  value="linkedin"
+                  fileIcon={getTechIcon("linkedin")}
+                  className="lg:text-lg"
+                >
                   <a
                     href="https://www.linkedin.com/in/evan-mavis/"
                     target="_blank"
@@ -283,7 +402,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                     linkedin
                   </a>
                 </File>
-                <File value="github" fileIcon={getTechIcon("github")}>
+                <File
+                  value="github"
+                  fileIcon={getTechIcon("github")}
+                  className="lg:text-lg"
+                >
                   <a
                     href="https://github.com/evan-mavis/"
                     target="_blank"
@@ -294,7 +417,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                     github
                   </a>
                 </File>
-                <File value="email" fileIcon={getTechIcon("email")}>
+                <File
+                  value="email"
+                  fileIcon={getTechIcon("email")}
+                  className="lg:text-lg"
+                >
                   <a
                     href={`mailto:evanmavis3@gmail.com?subject=${encodeURIComponent(
                       "Make it interesting :)"
@@ -336,7 +463,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                 </>
               }
               value="evan-mavis"
-              className="text-3xl"
+              className="text-3xl lg:text-4xl"
             >
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -354,55 +481,109 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                     </span>
                   }
                   value="full-stack-web-developer"
-                  className="text-xl md:text-lg [&>button]:gap-2 md:[&>button]:gap-1"
+                  className="text-xl lg:text-2xl [&>button]:gap-2 md:[&>button]:gap-1"
                 >
-                  <Folder element="my tech stack/" value="my-tech-stack">
-                    <File value="next.js" fileIcon={getTechIcon("next.js")}>
+                  <Folder
+                    element="my tech stack/"
+                    value="my-tech-stack"
+                    className="lg:text-lg"
+                  >
+                    <File
+                      value="next.js"
+                      fileIcon={getTechIcon("next.js")}
+                      className="lg:text-lg"
+                    >
                       next.js
                     </File>
-                    <File value="react" fileIcon={getTechIcon("react")}>
+                    <File
+                      value="react"
+                      fileIcon={getTechIcon("react")}
+                      className="lg:text-lg"
+                    >
                       react
                     </File>
                     <File
                       value="typescript"
                       fileIcon={getTechIcon("typescript")}
+                      className="lg:text-lg"
                     >
                       typescript
                     </File>
-                    <File value="shadcn" fileIcon={getTechIcon("shadcn")}>
+                    <File
+                      value="shadcn"
+                      fileIcon={getTechIcon("shadcn")}
+                      className="lg:text-lg"
+                    >
                       shadcn
                     </File>
-                    <File value="tailwind" fileIcon={getTechIcon("tailwind")}>
+                    <File
+                      value="tailwind"
+                      fileIcon={getTechIcon("tailwind")}
+                      className="lg:text-lg"
+                    >
                       tailwind
                     </File>
-                    <File value="express" fileIcon={getTechIcon("express")}>
+                    <File
+                      value="express"
+                      fileIcon={getTechIcon("express")}
+                      className="lg:text-lg"
+                    >
                       express
                     </File>
-                    <File value="drizzle" fileIcon={getTechIcon("drizzle")}>
+                    <File
+                      value="drizzle"
+                      fileIcon={getTechIcon("drizzle")}
+                      className="lg:text-lg"
+                    >
                       drizzle
                     </File>
-                    <File value="postgres" fileIcon={getTechIcon("postgres")}>
+                    <File
+                      value="postgres"
+                      fileIcon={getTechIcon("postgres")}
+                      className="lg:text-lg"
+                    >
                       postgres
                     </File>
-                    <File value="neon" fileIcon={getTechIcon("neon")}>
+                    <File
+                      value="neon"
+                      fileIcon={getTechIcon("neon")}
+                      className="lg:text-lg"
+                    >
                       neon
                     </File>
-                    <File value="vercel" fileIcon={getTechIcon("vercel")}>
+                    <File
+                      value="vercel"
+                      fileIcon={getTechIcon("vercel")}
+                      className="lg:text-lg"
+                    >
                       vercel
                     </File>
                     <File
                       value="betterauth"
                       fileIcon={getTechIcon("betterauth")}
+                      className="lg:text-lg"
                     >
                       betterauth
                     </File>
-                    <File value="github" fileIcon={getTechIcon("github")}>
+                    <File
+                      value="github"
+                      fileIcon={getTechIcon("github")}
+                      className="lg:text-lg"
+                    >
                       github
                     </File>
                   </Folder>
 
-                  <Folder element="other tech/" value="other-tech">
-                    <Folder element="tooling/" value="tooling">
+                  <Folder
+                    element="other tech/"
+                    value="other-tech"
+                    className="lg:text-lg"
+                  >
+                    <Folder
+                      element="tooling/"
+                      value="tooling"
+                      className="lg:text-lg"
+                    >
                       <File value="github" fileIcon={getTechIcon("github")}>
                         github
                       </File>
@@ -413,7 +594,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                         cursor
                       </File>
                     </Folder>
-                    <Folder element="productivity/" value="productivity">
+                    <Folder
+                      element="productivity/"
+                      value="productivity"
+                      className="lg:text-lg"
+                    >
                       <File value="obsidian" fileIcon={getTechIcon("obsidian")}>
                         obsidian
                       </File>
@@ -440,8 +625,16 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                     </Folder>
                   </Folder>
 
-                  <Folder element="projects/" value="projects">
-                    <File value="wishswipe" fileIcon={getTechIcon("wishswipe")}>
+                  <Folder
+                    element="projects/"
+                    value="projects"
+                    className="lg:text-lg"
+                  >
+                    <File
+                      value="wishswipe"
+                      fileIcon={getTechIcon("wishswipe")}
+                      className="lg:text-lg"
+                    >
                       <a
                         href="https://wishswipe.app/login"
                         target="_blank"
@@ -452,7 +645,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                         wishswipe
                       </a>
                     </File>
-                    <File value="chain-log" fileIcon={getTechIcon("chain-log")}>
+                    <File
+                      value="chain-log"
+                      fileIcon={getTechIcon("chain-log")}
+                      className="lg:text-lg"
+                    >
                       <a
                         href="https://chain-log.app"
                         target="_blank"
@@ -468,16 +665,29 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <Folder
                     element="interesting stuff/"
                     value="interesting-stuff"
+                    className="lg:text-lg"
                   >
-                    <File value="travel" fileIcon={getTechIcon("travel")}>
+                    <File
+                      value="travel"
+                      fileIcon={getTechIcon("travel")}
+                      className="lg:text-lg"
+                    >
                       travel
                     </File>
-                    <File value="food" fileIcon={getTechIcon("food")}>
+                    <File
+                      value="food"
+                      fileIcon={getTechIcon("food")}
+                      className="lg:text-lg"
+                    >
                       food
                     </File>
                   </Folder>
 
-                  <File value="resume" fileIcon={getTechIcon("resume")}>
+                  <File
+                    value="resume"
+                    fileIcon={getTechIcon("resume")}
+                    className="lg:text-lg"
+                  >
                     <a
                       href="/evan-mavis-resume.pdf"
                       download="evan-mavis-resume.pdf"
@@ -487,7 +697,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                       resume
                     </a>
                   </File>
-                  <File value="linkedin" fileIcon={getTechIcon("linkedin")}>
+                  <File
+                    value="linkedin"
+                    fileIcon={getTechIcon("linkedin")}
+                    className="lg:text-lg"
+                  >
                     <a
                       href="https://www.linkedin.com/in/evan-mavis/"
                       target="_blank"
@@ -498,7 +712,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                       linkedin
                     </a>
                   </File>
-                  <File value="github" fileIcon={getTechIcon("github")}>
+                  <File
+                    value="github"
+                    fileIcon={getTechIcon("github")}
+                    className="lg:text-lg"
+                  >
                     <a
                       href="https://github.com/evan-mavis/"
                       target="_blank"
@@ -509,7 +727,11 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                       github
                     </a>
                   </File>
-                  <File value="email" fileIcon={getTechIcon("email")}>
+                  <File
+                    value="email"
+                    fileIcon={getTechIcon("email")}
+                    className="lg:text-lg"
+                  >
                     <a
                       href={`mailto:evanmavis3@gmail.com?subject=${encodeURIComponent(
                         "Make it interesting :)"
