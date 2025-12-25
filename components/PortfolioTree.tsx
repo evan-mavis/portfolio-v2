@@ -127,7 +127,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             >
               <Folder
                 element={
-                  <span className="text-left leading-normal">
+                  <span className="text-left leading-normal pl-2 md:pl-0 inline-block">
                     full stack web developer based out of NYC and a{" "}
                     <span className="text-[#B8860B] dark:text-[#FFD700] font-semibold">
                       CU Boulder alum
@@ -136,7 +136,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   </span>
                 }
                 value="full-stack-web-developer"
-                className="text-lg sm:text-lg [&>button]:gap-2 md:[&>button]:gap-1 [&>button>span]:pl-2 md:[&>button>span]:pl-0"
+                className="text-lg sm:text-lg [&>button]:gap-2 md:[&>button]:gap-1"
               >
                 <Folder element="my tech stack/" value="my-tech-stack">
                   <File value="next.js" fileIcon={getTechIcon("nextjs")}>
@@ -345,7 +345,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               >
                 <Folder
                   element={
-                    <span className="text-left leading-normal">
+                    <span className="text-left leading-normal pl-2 md:pl-0 inline-block">
                       full stack web developer based out of NYC and a{" "}
                       <span className="text-[#B8860B] dark:text-[#FFD700] font-semibold">
                         CU Boulder alum
@@ -354,7 +354,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                     </span>
                   }
                   value="full-stack-web-developer"
-                  className="text-xl md:text-lg [&>button]:gap-2 md:[&>button]:gap-1 [&>button>span]:pl-2 md:[&>button>span]:pl-0"
+                  className="text-xl md:text-lg [&>button]:gap-2 md:[&>button]:gap-1"
                 >
                   <Folder element="my tech stack/" value="my-tech-stack">
                     <File value="next.js" fileIcon={getTechIcon("next.js")}>
