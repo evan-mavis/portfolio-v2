@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Food Trip Tier List",
   description:
-    "Ranked tier list of amazing food from my travels to Bali, Vietnam, and Japan. Discover the best culinary experiences from S-tier to F-tier.",
+    "Ranked tier list of food from my travels to Bali, Vietnam, and Japan. Discover the best culinary experiences from S-tier to F-tier.",
   openGraph: {
     title: "Food Tier List - My Food Trip to Bali, Vietnam, and Japan",
     description:
