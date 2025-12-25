@@ -249,7 +249,7 @@ const Folder = ({
         {expandedItems?.includes(value)
           ? openIcon ?? <FolderOpenIcon className="w-[1em] h-[1em]" />
           : closeIcon ?? <FolderIcon className="w-[1em] h-[1em]" />}
-        <span>{element}</span>
+        <span className="text-left flex-1">{element}</span>
         {inlineContent}
       </AccordionPrimitive.Trigger>
       <AccordionPrimitive.Content className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative h-full overflow-hidden text-base">

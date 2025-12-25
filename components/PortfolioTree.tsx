@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState, startTransition } from "react";
+import Link from "next/link";
 import { Folder, Tree, File } from "./ui/file-tree";
 import { getTechIcon } from "@/lib/tech-icons";
 import { Avatar, AvatarImage } from "./ui/avatar";
@@ -126,16 +127,16 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             >
               <Folder
                 element={
-                  <>
+                  <span className="text-left leading-normal">
                     full stack web developer based out of NYC and a{" "}
                     <span className="text-[#B8860B] dark:text-[#FFD700] font-semibold">
                       CU Boulder alum
                     </span>
                     /
-                  </>
+                  </span>
                 }
                 value="full-stack-web-developer"
-                className="text-2xl"
+                className="text-lg sm:text-lg [&>button]:gap-2 md:[&>button]:gap-1 [&>button>span]:pl-2 md:[&>button>span]:pl-0"
               >
                 <Folder element="my tech stack/" value="my-tech-stack">
                   <File value="next.js" fileIcon={getTechIcon("nextjs")}>
@@ -242,10 +243,22 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
 
                 <Folder element="interesting stuff/" value="interesting-stuff">
                   <File value="travel" fileIcon={getTechIcon("travel")}>
-                    travel
+                    <Link
+                      href="/travel"
+                      className="text-primary hover:underline"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      travel
+                    </Link>
                   </File>
                   <File value="food" fileIcon={getTechIcon("food")}>
-                    food
+                    <Link
+                      href="/food"
+                      className="text-primary hover:underline"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      food
+                    </Link>
                   </File>
                 </Folder>
 
@@ -332,16 +345,16 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               >
                 <Folder
                   element={
-                    <>
+                    <span className="text-left leading-normal">
                       full stack web developer based out of NYC and a{" "}
                       <span className="text-[#B8860B] dark:text-[#FFD700] font-semibold">
                         CU Boulder alum
                       </span>
                       /
-                    </>
+                    </span>
                   }
                   value="full-stack-web-developer"
-                  className="text-2xl"
+                  className="text-xl md:text-lg [&>button]:gap-2 md:[&>button]:gap-1 [&>button>span]:pl-2 md:[&>button>span]:pl-0"
                 >
                   <Folder element="my tech stack/" value="my-tech-stack">
                     <File value="next.js" fileIcon={getTechIcon("next.js")}>
