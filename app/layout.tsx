@@ -11,7 +11,7 @@ const jersey10 = Jersey_10({
 
 export const metadata: Metadata = {
   title: {
-    default: "Evan Mavis - Full Stack Web Developer Portfolio",
+    default: "Evan Mavis // Portfolio",
     template: "%s | Evan Mavis",
   },
   description:

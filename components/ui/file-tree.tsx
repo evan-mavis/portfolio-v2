@@ -356,7 +356,6 @@ const CollapseButton = forwardRef<
       expendAllTree(elements);
     }
   }, [expandAll, elements, expendAllTree]);
-
   return (
     <Button
       variant={"ghost"}
