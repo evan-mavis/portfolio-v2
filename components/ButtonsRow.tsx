@@ -19,6 +19,7 @@ export default function ButtonsRow({
         variant="outline"
         pressed={isExpanded}
         onPressedChange={onExpandedChange}
+        className="touch-manipulation min-w-[44px] min-h-[44px]"
       >
         {isExpanded ? <Minimize /> : <Expand />}
       </Toggle>
