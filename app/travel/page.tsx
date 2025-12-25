@@ -116,7 +116,6 @@ interface PinPosition {
 export default function TravelPage() {
   const [isMobile, setIsMobile] = useState(false);
 
-  // Generate pin positions for each image (deterministic based on index)
   const pinPositions = useMemo<PinPosition[]>(() => {
     return travelImages.map((_, index) => {
       // Alternate between corners based on index for variety
@@ -141,13 +140,6 @@ export default function TravelPage() {
       title="You should visit... ✈️"
       titleClassName="mb-16"
     >
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/3 rounded-full blur-3xl"></div>
-      </div>
-
       <div className="w-full relative z-10">
         <div className="flex flex-col items-center justify-center relative py-5 w-full gap-10">
           {travelImages.map((image, index) => {
