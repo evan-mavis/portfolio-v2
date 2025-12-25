@@ -136,7 +136,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   </span>
                 }
                 value="full-stack-web-developer"
-                className="text-lg sm:text-lg [&>button]:gap-2 md:[&>button]:gap-1"
+                className="text-xl md:text-lg [&>button]:gap-2 md:[&>button]:gap-1"
               >
                 <Folder element="my tech stack/" value="my-tech-stack">
                   <File value="next.js" fileIcon={getTechIcon("nextjs")}>
