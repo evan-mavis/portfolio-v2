@@ -39,7 +39,7 @@ export default function AvatarModal({
               className="pointer-events-auto"
               onClick={onClose}
             >
-              <Avatar className="size-[80vh] max-w-[600px] max-h-[600px] bg-primary border border-primary rounded-full overflow-hidden">
+              <Avatar className="w-[90vw] h-[90vw] max-w-[600px] max-h-[600px] sm:size-[80vh] bg-primary border border-primary rounded-full overflow-hidden">
                 <AvatarImage
                   src={avatarSrc}
                   loading="eager"
