@@ -22,6 +22,11 @@ const travelImages: TravelImage[] = [
     caption: "Mount Zas - Naxos, Greece",
   },
   {
+    src: "/japan-osaka-dotonbori.jpg",
+    alt: "Dotonbori - Osaka, Japan",
+    caption: "Dotonbori - Osaka, Japan",
+  },
+  {
     src: "/bali-uluwatu-bingin-beach.jpg",
     alt: "Bingin Beach - Uluwatu, Bali",
     caption: "Bingin Beach - Uluwatu, Bali",
@@ -48,8 +53,8 @@ const travelImages: TravelImage[] = [
   },
   {
     src: "/greece-milos-fishing-boats.jpeg",
-    alt: "Fishing Boats - Milos, Greece",
-    caption: "Fishing Boats - Milos, Greece",
+    alt: "Cool Boats - Milos, Greece",
+    caption: "Cool Boats - Milos, Greece",
   },
   {
     src: "/bali-ubud-rice-terraces.jpg",
@@ -63,8 +68,8 @@ const travelImages: TravelImage[] = [
   },
   {
     src: "/greece-milos-hotel-view.jpeg",
-    alt: "Hotel View - Milos, Greece",
-    caption: "Hotel View - Milos, Greece",
+    alt: "WOW - Milos, Greece",
+    caption: "WOW - Milos, Greece",
   },
   {
     src: "/bali-kintamani-ulun-danu-batur.jpg",
@@ -125,11 +130,6 @@ const travelImages: TravelImage[] = [
     src: "/costa-rica-papagayo-peninsula.jpg",
     alt: "Papagayo Peninsula - Costa Rica",
     caption: "Papagayo Peninsula - Costa Rica",
-  },
-  {
-    src: "/japan-osaka-dotonbori.jpg",
-    alt: "Dotonbori - Osaka, Japan",
-    caption: "Dotonbori - Osaka, Japan",
   },
   {
     src: "/greece-paros-party.jpeg",
