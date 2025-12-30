@@ -17,9 +17,19 @@ const travelImages: TravelImage[] = [
     caption: "Núi Ngoa Long - Ninh Binh, Vietnam",
   },
   {
+    src: "/greece-naxos-mt-zas.jpeg",
+    alt: "Mount Zas - Naxos, Greece",
+    caption: "Mount Zas - Naxos, Greece",
+  },
+  {
     src: "/bali-uluwatu-bingin-beach.jpg",
     alt: "Bingin Beach - Uluwatu, Bali",
     caption: "Bingin Beach - Uluwatu, Bali",
+  },
+  {
+    src: "/greece-milos-best-beach.jpeg",
+    alt: "Best Beach - Milos, Greece",
+    caption: "Best Beach - Milos, Greece",
   },
   {
     src: "/italy-positano-beach.jpg",
@@ -27,9 +37,19 @@ const travelImages: TravelImage[] = [
     caption: "Positano, Italy",
   },
   {
+    src: "/greece-milos-fishing-village.jpeg",
+    alt: "Fishing Village - Milos, Greece",
+    caption: "Fishing Village - Milos, Greece",
+  },
+  {
     src: "/us-california-slo.jpeg",
     alt: "San Luis Obispo - California, US",
     caption: "San Luis Obispo - California, US",
+  },
+  {
+    src: "/greece-milos-fishing-boats.jpeg",
+    alt: "Fishing Boats - Milos, Greece",
+    caption: "Fishing Boats - Milos, Greece",
   },
   {
     src: "/bali-ubud-rice-terraces.jpg",
@@ -42,6 +62,11 @@ const travelImages: TravelImage[] = [
     caption: "Chautauqua Park - Boulder, US",
   },
   {
+    src: "/greece-milos-hotel-view.jpeg",
+    alt: "Hotel View - Milos, Greece",
+    caption: "Hotel View - Milos, Greece",
+  },
+  {
     src: "/bali-kintamani-ulun-danu-batur.jpg",
     alt: "Ulun Danu Batur - Kintamani, Bali",
     caption: "Ulun Danu Batur - Kintamani, Bali",
@@ -50,6 +75,11 @@ const travelImages: TravelImage[] = [
     src: "/us-boulder-flatirons.jpg",
     alt: "Flatirons - Boulder, US",
     caption: "Flatirons - Boulder, US",
+  },
+  {
+    src: "/greece-milos-medusa.jpeg",
+    alt: "Medusa - Milos, Greece",
+    caption: "Medusa - Milos, Greece",
   },
   {
     src: "/japan-kyoto-fushimi-inari.jpg",
@@ -62,14 +92,29 @@ const travelImages: TravelImage[] = [
     caption: "The Big 🍎",
   },
   {
+    src: "/us-new-york-central-park-garden.jpeg",
+    alt: "Central Park Garden - New York, US",
+    caption: "Central Park Garden - New York, US",
+  },
+  {
     src: "/japan-kyoto-gion-district.jpg",
     alt: "Gion District - Kyoto, Japan",
     caption: "Gion District - Kyoto, Japan",
   },
   {
+    src: "/greece-paros-castle.jpeg",
+    alt: "Castle - Paros, Greece",
+    caption: "Castle - Paros, Greece",
+  },
+  {
     src: "/us-wyoming-jackson-hole.jpeg",
     alt: "Jackson Hole - Wyoming, US",
     caption: "Jackson Hole - Wyoming, US",
+  },
+  {
+    src: "/us-idaho-sun-valley-ice-hockey.jpeg",
+    alt: "Ice Hockey - Sun Valley, Idaho, US",
+    caption: "Ice Hockey - Sun Valley, Idaho, US",
   },
   {
     src: "/japan-kyoto-kinkaku-ji.jpg",
@@ -87,9 +132,19 @@ const travelImages: TravelImage[] = [
     caption: "Dotonbori - Osaka, Japan",
   },
   {
+    src: "/greece-paros-party.jpeg",
+    alt: "Paros, Greece",
+    caption: "Paros, Greece",
+  },
+  {
     src: "/vietnam-ha-long-bay.jpg",
     alt: "Ha Long Bay, Vietnam",
     caption: "Ha Long Bay, Vietnam",
+  },
+  {
+    src: "/germany-berlin-cathedral.jpeg",
+    alt: "Berlin Cathedral - Berlin, Germany",
+    caption: "Berlin Cathedral - Berlin, Germany",
   },
   {
     src: "/japan-kyoto-bamboo-forest.jpg",
@@ -100,6 +155,11 @@ const travelImages: TravelImage[] = [
     src: "/vietnam-hanoi-train-street.jpg",
     alt: "Hanoi Train Street - Hanoi, Vietnam",
     caption: "Hanoi Train Street - Hanoi, Vietnam",
+  },
+  {
+    src: "/us-new-york-friends-fidi.jpeg",
+    alt: "Friends - FiDi, New York, US",
+    caption: "Friends - FiDi, New York, US",
   },
   {
     src: "/japan-tokyo-skytree.jpg",
