@@ -443,6 +443,19 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                 food
               </Link>
             </File>
+            <File
+              value="food"
+              fileIcon={getTechIcon("food")}
+              className="lg:text-lg"
+            >
+              <Link
+                href="https://beliapp.co/app/evanmavis"
+                className="text-primary hover:underline"
+                onClick={(e) => e.stopPropagation()}
+              >
+                beli (see what I like to eat in NYC)
+              </Link>
+            </File>
           </Folder>
 
           <Folder
