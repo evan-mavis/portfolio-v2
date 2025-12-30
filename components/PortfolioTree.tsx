@@ -7,6 +7,7 @@ import { Folder, Tree, File } from "./ui/file-tree";
 import { getTechIcon } from "@/lib/tech-icons";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import AvatarModal from "./AvatarModal";
+import { CircleSmall } from "lucide-react";
 
 interface PortfolioTreeProps {
   isExpanded: boolean;
@@ -139,6 +140,9 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               <File
                 value="kpmg-senior-desc"
                 className="lg:text-lg text-sm opacity-80"
+                fileIcon={
+                  <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
+                }
               >
                 mastered our app - my team reached peak dev velocity w/ new
                 features
@@ -159,6 +163,9 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               <File
                 value="kpmg-fulltime-desc"
                 className="lg:text-lg text-sm opacity-80"
+                fileIcon={
+                  <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
+                }
               >
                 led a sub-team of 5 US devs automating transfer pricing reports
               </File>
@@ -178,6 +185,9 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               <File
                 value="kpmg-intern-desc"
                 className="lg:text-lg text-sm opacity-80"
+                fileIcon={
+                  <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
+                }
               >
                 fell in love with web dev
               </File>
@@ -197,12 +207,18 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               <File
                 value="education-studies-desc"
                 className="lg:text-lg text-sm opacity-80"
+                fileIcon={
+                  <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
+                }
               >
                 studied CS, finance, business analytics, and info management
               </File>
               <File
                 value="education-gpa-desc"
                 className="lg:text-lg text-sm opacity-80"
+                fileIcon={
+                  <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
+                }
               >
                 GPA: 3.95
               </File>
@@ -210,6 +226,9 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               <File
                 value="education-skied-desc"
                 className="lg:text-lg text-sm opacity-80"
+                fileIcon={
+                  <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
+                }
               >
                 skied most fridays!! 🎿
               </File>
@@ -226,7 +245,13 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               value="ta"
               className="lg:text-lg"
             >
-              <File value="ta-desc" className="lg:text-lg text-sm opacity-80">
+              <File
+                value="ta-desc"
+                className="lg:text-lg text-sm opacity-80"
+                fileIcon={
+                  <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
+                }
+              >
                 helped students get fired up about data analysis and machine
                 learning
               </File>
@@ -246,6 +271,9 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               <File
                 value="mentor-desc"
                 className="lg:text-lg text-sm opacity-80"
+                fileIcon={
+                  <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
+                }
               >
                 mentored 8 incoming freshmen at our business school
               </File>
