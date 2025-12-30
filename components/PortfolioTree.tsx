@@ -334,13 +334,6 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             >
               betterauth
             </File>
-            <File
-              value="github"
-              fileIcon={getTechIcon("github")}
-              className="lg:text-lg"
-            >
-              github
-            </File>
             <Folder
               element="other tech/"
               value="other-tech"
