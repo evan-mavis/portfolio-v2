@@ -440,7 +440,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                 className="text-primary hover:underline"
                 onClick={(e) => e.stopPropagation()}
               >
-                food
+                food trip to southeast asia + japan
               </Link>
             </File>
             <File
