@@ -144,8 +144,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
                 }
               >
-                mastered our app - my team reached peak dev velocity w/ new
-                features
+                continued to lead my team and ship fast
               </File>
             </Folder>
             <Folder
