@@ -144,7 +144,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
                 }
               >
-                continued to lead my team and ship fast
+                started having agents write all my code. now i just review it.
               </File>
             </Folder>
             <Folder
