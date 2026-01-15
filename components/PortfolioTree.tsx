@@ -115,7 +115,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
           element={
             <span className="text-left leading-normal pl-2 md:pl-0 inline-block">
               full stack web developer based out of NYC and a{" "}
-              <span className="text-[#B8860B] dark:text-[#FFD700] font-semibold">
+              <span className="text-[#B8860B] dark:text-primary font-semibold">
                 CU Boulder alum
               </span>
               /
@@ -128,7 +128,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             <Folder
               element={
                 <>
-                  <span className="text-[#B8860B] dark:text-[#FFD700]">
+                  <span className="text-[#B8860B] dark:text-primary">
                     2025-Present
                   </span>{" "}
                   kpmg us • senior software engineer
@@ -150,7 +150,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             <Folder
               element={
                 <>
-                  <span className="text-[#B8860B] dark:text-[#FFD700]">
+                  <span className="text-[#B8860B] dark:text-primary">
                     2023-2024
                   </span>{" "}
                   kpmg us • software engineer
@@ -172,9 +172,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             <Folder
               element={
                 <>
-                  <span className="text-[#B8860B] dark:text-[#FFD700]">
-                    2022
-                  </span>{" "}
+                  <span className="text-[#B8860B] dark:text-primary">2022</span>{" "}
                   kpmg us • software engineer intern
                 </>
               }
@@ -194,9 +192,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             <Folder
               element={
                 <>
-                  <span className="text-[#B8860B] dark:text-[#FFD700]">
-                    2023
-                  </span>{" "}
+                  <span className="text-[#B8860B] dark:text-primary">2023</span>{" "}
                   cu boulder • graduated/
                 </>
               }
@@ -235,7 +231,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             <Folder
               element={
                 <>
-                  <span className="text-[#B8860B] dark:text-[#FFD700]">
+                  <span className="text-[#B8860B] dark:text-primary">
                     2021-2023
                   </span>{" "}
                   cu boulder • information management teachers assistant/
@@ -258,7 +254,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             <Folder
               element={
                 <>
-                  <span className="text-[#B8860B] dark:text-[#FFD700]">
+                  <span className="text-[#B8860B] dark:text-primary">
                     2019-2023
                   </span>{" "}
                   cu boulder • leeds mentoring program/
