@@ -473,7 +473,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                 className="text-primary hover:underline"
                 onClick={(e) => e.stopPropagation()}
               >
-                beli (see what I like to eat in NYC)
+                beli
               </Link>
             </File>
           </Folder>
