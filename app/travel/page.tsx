@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import PageLayout from "@/components/PageLayout";
+import { track } from "@vercel/analytics";
 
 interface TravelImage {
   src: string;
@@ -192,6 +193,10 @@ export default function TravelPage() {
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    track("travel_page_view");
   }, []);
 
   return (

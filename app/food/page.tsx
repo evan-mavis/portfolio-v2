@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import PageLayout from "@/components/PageLayout";
+import { track } from "@vercel/analytics";
 
 interface FoodImage {
   src: string;
@@ -196,6 +197,10 @@ const tierMap: Record<TierType, FoodImage[]> = {
 
 export default function FoodPage() {
   const [enlargedImage, setEnlargedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    track("food_page_view");
+  }, []);
 
   const toggleEnlarge = (src: string) => {
     setEnlargedImage(enlargedImage === src ? null : src);

@@ -8,6 +8,7 @@ import { getTechIcon } from "@/lib/tech-icons";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import AvatarModal from "./AvatarModal";
 import { CircleSmall } from "lucide-react";
+import { track } from "@vercel/analytics";
 
 interface PortfolioTreeProps {
   isExpanded: boolean;
@@ -441,7 +442,10 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               <Link
                 href="/travel"
                 className="text-primary hover:underline"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  track("travel_page_click");
+                }}
               >
                 travel
               </Link>
@@ -454,7 +458,10 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               <Link
                 href="/food"
                 className="text-primary hover:underline"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  track("food_page_click");
+                }}
               >
                 food trip to southeast asia + japan
               </Link>
@@ -524,7 +531,10 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               href="/evan-mavis-resume.pdf"
               download="evan-mavis-resume.pdf"
               className="text-primary hover:underline"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                track("resume_click");
+              }}
             >
               resume
             </a>
@@ -539,7 +549,10 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                track("linkedin_click");
+              }}
             >
               linkedin
             </a>
@@ -554,7 +567,10 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                track("github_click");
+              }}
             >
               github
             </a>
@@ -569,7 +585,10 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                 "Make it interesting :)"
               )}`}
               className="text-primary hover:underline"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                track("email_click");
+              }}
             >
               email
             </a>
