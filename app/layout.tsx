@@ -13,7 +13,7 @@ const jersey10 = Jersey_10({
 export const metadata: Metadata = {
   title: {
     default: "Evan Mavis // Portfolio",
-    template: "%s | Evan Mavis",
+    template: "Evan Mavis // %s",
   },
   description:
     "Full stack web developer based in NYC and CU Boulder alum. Specializing in Next.js, React, TypeScript, and modern web technologies.",

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Food Tier List - My Food Trip to Bali, Vietnam, and Japan",
     description:
-      "Ranked tier list of amazing food from my travels to Bali, Vietnam, and Japan.",
+      "Ranked tier list of food from my travels to Bali, Vietnam, and Japan.",
     type: "website",
   },
 };
