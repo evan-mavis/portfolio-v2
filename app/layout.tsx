@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Jersey_10 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Analytics } from "@vercel/analytics/react";
 
 const jersey10 = Jersey_10({
   weight: "400",
@@ -70,6 +71,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
