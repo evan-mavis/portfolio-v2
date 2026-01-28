@@ -145,7 +145,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
                 }
               >
-                started having agents write all my code. now i just review it.
+                started having agents write my code. 
               </File>
             </Folder>
             <Folder
@@ -187,7 +187,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
                 }
               >
-                fell in love with web dev
+                introduced to web dev
               </File>
             </Folder>
             <Folder
@@ -248,7 +248,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
                 }
               >
-                helped students get fired up about data analysis and machine
+                helped students get w/ data analysis and machine
                 learning
               </File>
             </Folder>
