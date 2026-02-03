@@ -26,6 +26,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
     "projects",
     "interesting-stuff",
     "career",
+    "airgoods",
     "kpmg-senior",
     "kpmg-fulltime",
     "kpmg-intern",
@@ -130,7 +131,29 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               element={
                 <>
                   <span className="text-[#B8860B] dark:text-primary">
-                    2025-Present
+                    2026-Present
+                  </span>{" "}
+                  airgoods • software engineer
+                </>
+              }
+              value="airgoods"
+              className="lg:text-lg"
+            >
+              <File
+                value="airgoods-desc"
+                className="lg:text-lg text-sm opacity-80"
+                fileIcon={
+                  <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
+                }
+              >
+                super excited to be here!!
+              </File>
+            </Folder>
+            <Folder
+              element={
+                <>
+                  <span className="text-[#B8860B] dark:text-primary">
+                    2025
                   </span>{" "}
                   kpmg us • senior software engineer
                 </>
