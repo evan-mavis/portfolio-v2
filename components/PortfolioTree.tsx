@@ -152,9 +152,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             <Folder
               element={
                 <>
-                  <span className="text-[#B8860B] dark:text-primary">
-                    2025
-                  </span>{" "}
+                  <span className="text-[#B8860B] dark:text-primary">2025</span>{" "}
                   kpmg us • senior software engineer
                 </>
               }
@@ -271,8 +269,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
                 }
               >
-                helped students get w/ data analysis and machine
-                learning
+                helped students w/ data analysis and machine learning
               </File>
             </Folder>
             <Folder
@@ -605,7 +602,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
           >
             <a
               href={`mailto:evanmavis3@gmail.com?subject=${encodeURIComponent(
-                "Make it interesting :)"
+                "Make it interesting :)",
               )}`}
               className="text-primary hover:underline"
               onClick={(e) => {
