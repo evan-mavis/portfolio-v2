@@ -19,10 +19,8 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
     "evan-mavis",
     "full-stack-web-developer",
     "my-tech-stack",
-    "other-tech",
     "tooling",
     "productivity",
-    "favorite-languages",
     "projects",
     "interesting-stuff",
     "career",
@@ -30,9 +28,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
     "kpmg-senior",
     "kpmg-fulltime",
     "kpmg-intern",
-    "education",
-    "ta",
-    "mentor",
+    "cu-boulder",
   ];
 
   // first two folders that should be expanded on initial load
@@ -133,7 +129,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <span className="text-[#B8860B] dark:text-primary">
                     2026-Present
                   </span>{" "}
-                  airgoods • software engineer
+                  airgoods • software engineer/
                 </>
               }
               value="airgoods"
@@ -153,7 +149,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               element={
                 <>
                   <span className="text-[#B8860B] dark:text-primary">2025</span>{" "}
-                  kpmg us • senior software engineer
+                  kpmg us • senior software engineer/
                 </>
               }
               value="kpmg-senior"
@@ -175,7 +171,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <span className="text-[#B8860B] dark:text-primary">
                     2023-2024
                   </span>{" "}
-                  kpmg us • software engineer
+                  kpmg us • software engineer/
                 </>
               }
               value="kpmg-fulltime"
@@ -195,7 +191,7 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               element={
                 <>
                   <span className="text-[#B8860B] dark:text-primary">2022</span>{" "}
-                  kpmg us • software engineer intern
+                  kpmg us • software engineer intern/
                 </>
               }
               value="kpmg-intern"
@@ -214,11 +210,13 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             <Folder
               element={
                 <>
-                  <span className="text-[#B8860B] dark:text-primary">2023</span>{" "}
-                  cu boulder • graduated/
+                  <span className="text-[#B8860B] dark:text-primary">
+                    2019-2023
+                  </span>{" "}
+                  university of colorado boulder • 🦬/
                 </>
               }
-              value="education"
+              value="cu-boulder"
               className="lg:text-lg"
             >
               <File
@@ -237,9 +235,8 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
                 }
               >
-                GPA: 3.95
+                GPA: 3.95 🤓
               </File>
-
               <File
                 value="education-skied-desc"
                 className="lg:text-lg text-sm opacity-80"
@@ -249,19 +246,6 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               >
                 skied most fridays!! 🎿
               </File>
-            </Folder>
-            <Folder
-              element={
-                <>
-                  <span className="text-[#B8860B] dark:text-primary">
-                    2021-2023
-                  </span>{" "}
-                  cu boulder • information management teachers assistant/
-                </>
-              }
-              value="ta"
-              className="lg:text-lg"
-            >
               <File
                 value="ta-desc"
                 className="lg:text-lg text-sm opacity-80"
@@ -269,21 +253,9 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
                 }
               >
-                helped students w/ data analysis and machine learning
+                helped students w/ data analysis and machine learning as an
+                information management teachers assistant
               </File>
-            </Folder>
-            <Folder
-              element={
-                <>
-                  <span className="text-[#B8860B] dark:text-primary">
-                    2019-2023
-                  </span>{" "}
-                  cu boulder • leeds mentoring program/
-                </>
-              }
-              value="mentor"
-              className="lg:text-lg"
-            >
               <File
                 value="mentor-desc"
                 className="lg:text-lg text-sm opacity-80"
@@ -291,7 +263,8 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
                   <CircleSmall className="w-[1.25em] h-[1.25em] shrink-0" />
                 }
               >
-                mentored 8 incoming freshmen at our business school
+                mentored 8 incoming freshmen at our business school in the leeds
+                mentoring program
               </File>
             </Folder>
           </Folder>
@@ -378,74 +351,62 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
             >
               betterauth
             </File>
+            <Folder element="tooling/" value="tooling" className="lg:text-lg">
+              <File
+                value="cursor"
+                fileIcon={getTechIcon("cursor")}
+                className="lg:text-lg"
+              >
+                cursor
+              </File>
+              <File
+                value="codex"
+                fileIcon={getTechIcon("codex")}
+                className="lg:text-lg"
+              >
+                codex
+              </File>
+              <File
+                value="github"
+                fileIcon={getTechIcon("github")}
+                className="lg:text-lg"
+              >
+                github
+              </File>
+            </Folder>
             <Folder
-              element="other tech/"
-              value="other-tech"
+              element="productivity/"
+              value="productivity"
               className="lg:text-lg"
             >
-              <Folder element="tooling/" value="tooling" className="lg:text-lg">
-                <File
-                  value="github"
-                  fileIcon={getTechIcon("github")}
-                  className="lg:text-lg"
-                >
-                  github
-                </File>
-                <File
-                  value="git"
-                  fileIcon={getTechIcon("git")}
-                  className="lg:text-lg"
-                >
-                  git
-                </File>
-                <File
-                  value="cursor"
-                  fileIcon={getTechIcon("cursor")}
-                  className="lg:text-lg"
-                >
-                  cursor
-                </File>
-              </Folder>
-              <Folder
-                element="productivity/"
-                value="productivity"
+              <File
+                value="linear"
+                fileIcon={getTechIcon("linear")}
                 className="lg:text-lg"
               >
-                <File
-                  value="obsidian"
-                  fileIcon={getTechIcon("obsidian")}
-                  className="lg:text-lg"
-                >
-                  obsidian
-                </File>
-                <File
-                  value="excalidraw"
-                  fileIcon={getTechIcon("excalidraw")}
-                  className="lg:text-lg"
-                >
-                  excalidraw
-                </File>
-              </Folder>
-              <Folder
-                element="favorite languages/"
-                value="favorite-languages"
+                linear
+              </File>
+              <File
+                value="notion"
+                fileIcon={getTechIcon("notion")}
                 className="lg:text-lg"
               >
-                <File
-                  value="python"
-                  fileIcon={getTechIcon("python")}
-                  className="lg:text-lg"
-                >
-                  python
-                </File>
-                <File
-                  value="typescript"
-                  fileIcon={getTechIcon("typescript")}
-                  className="lg:text-lg"
-                >
-                  typescript
-                </File>
-              </Folder>
+                notion
+              </File>
+              <File
+                value="slack"
+                fileIcon={getTechIcon("slack")}
+                className="lg:text-lg"
+              >
+                slack
+              </File>
+              <File
+                value="excalidraw"
+                fileIcon={getTechIcon("excalidraw")}
+                className="lg:text-lg"
+              >
+                excalidraw
+              </File>
             </Folder>
           </Folder>
 

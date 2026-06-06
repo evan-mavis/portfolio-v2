@@ -29,8 +29,12 @@ export function getTechIcon(techName: string): React.ReactNode {
     // Other tech
     git: <Icon icon="simple-icons:git" className={iconClass} />,
     cursor: <Icon icon="simple-icons:cursor" className={iconClass} />,
+    codex: <Icon icon="simple-icons:openai" className={iconClass} />,
     obsidian: <Icon icon="simple-icons:obsidian" className={iconClass} />,
     excalidraw: <Icon icon="simple-icons:excalidraw" className={iconClass} />,
+    linear: <Icon icon="simple-icons:linear" className={iconClass} />,
+    notion: <Icon icon="simple-icons:notion" className={iconClass} />,
+    slack: <Icon icon="simple-icons:slack" className={iconClass} />,
     python: <Icon icon="simple-icons:python" className={iconClass} />,
     react: <Icon icon="simple-icons:react" className={iconClass} />,
 
