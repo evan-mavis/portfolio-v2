@@ -282,6 +282,13 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
               next.js
             </File>
             <File
+              value="vite"
+              fileIcon={getTechIcon("vite")}
+              className="lg:text-lg"
+            >
+              vite
+            </File>
+            <File
               value="react"
               fileIcon={getTechIcon("react")}
               className="lg:text-lg"

@@ -11,6 +11,7 @@ export function getTechIcon(techName: string): React.ReactNode {
     postgres: <Icon icon="simple-icons:postgresql" className={iconClass} />,
     azure: <Icon icon="simple-icons:azure" className={iconClass} />,
     nextjs: <Icon icon="file-icons:nextjs" className={iconClass} />,
+    vite: <Icon icon="simple-icons:vite" className={iconClass} />,
     typescript: <Icon icon="simple-icons:typescript" className={iconClass} />,
     shadcn: <Icon icon="simple-icons:shadcnui" className={iconClass} />,
     tailwind: <Icon icon="simple-icons:tailwindcss" className={iconClass} />,
