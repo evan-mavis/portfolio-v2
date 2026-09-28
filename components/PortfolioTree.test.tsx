@@ -20,6 +20,22 @@ function renderTree(
 }
 
 describe("PortfolioTree", () => {
+  it("renders the tree instantly with no load-in animation styles", () => {
+    vi.useFakeTimers();
+    try {
+      const { container } = renderTree(DEFAULT_EXPANDED_ITEMS);
+      // tree content is present before any timer fires
+      expect(screen.getByText("career/")).toBeInTheDocument();
+      // no framer-motion intro styles (opacity/transform) on the first paint
+      const wrapper = container.firstElementChild;
+      const style = wrapper?.getAttribute("style") ?? "";
+      expect(style).not.toMatch(/opacity:\s*0/);
+      expect(style).not.toMatch(/transform/);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("shows every section when fully expanded", () => {
     renderTree();
     for (const label of ["career/", "my tech stack/", "projects/"]) {

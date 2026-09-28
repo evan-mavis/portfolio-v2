@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { Folder, Tree, File } from "./ui/file-tree";
@@ -118,14 +117,8 @@ export default function PortfolioTree({
 }: PortfolioTreeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [minWidth, setMinWidth] = useState<number | undefined>(undefined);
-  const [hasAnimated, setHasAnimated] = useState(false);
 
   useMountEffect(() => {
-    // mark animations as complete after initial load
-    const timer = setTimeout(() => {
-      setHasAnimated(true);
-    }, 2000);
-
     // use ResizeObserver to track width and maintain the maximum width
     // this ensures the container maintains its width when first two folders are expanded
     // even when they're manually collapsed
@@ -142,19 +135,13 @@ export default function PortfolioTree({
     }
 
     return () => {
-      clearTimeout(timer);
       resizeObserver.disconnect();
     };
   });
 
-  const treeContent = PORTFOLIO_TREE_DATA.map(renderNode);
-
   return (
-    <motion.div
+    <div
       ref={containerRef}
-      initial={hasAnimated ? false : { opacity: 0, y: 20 }}
-      animate={hasAnimated ? {} : { opacity: 1, y: 0 }}
-      transition={hasAnimated ? {} : { duration: 1.0, ease: "easeOut" }}
       className="inline-flex items-start gap-4"
       style={{ minWidth: minWidth ? `${minWidth}px` : undefined }}
     >
@@ -163,24 +150,8 @@ export default function PortfolioTree({
         expandedItems={expandedItems}
         onExpandedChange={onExpandedChange}
       >
-        {hasAnimated ? (
-          treeContent
-        ) : (
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.0, delay: 0.3, ease: "easeOut" }}
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.0, delay: 0.8, ease: "easeOut" }}
-            >
-              {treeContent}
-            </motion.div>
-          </motion.div>
-        )}
+        {PORTFOLIO_TREE_DATA.map(renderNode)}
       </Tree>
-    </motion.div>
+    </div>
   );
 }
