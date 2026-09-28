@@ -11,7 +11,6 @@ import icIcons from "@iconify-json/ic/icons.json" with { type: "json" };
 import materialSymbolsLight from "@iconify-json/material-symbols-light/icons.json" with { type: "json" };
 import simpleIcons from "@iconify-json/simple-icons/icons.json" with { type: "json" };
 import systemUicons from "@iconify-json/system-uicons/icons.json" with { type: "json" };
-import weui from "@iconify-json/weui/icons.json" with { type: "json" };
 
 const OUTPUT_FILE = new URL("../lib/icons-generated.ts", import.meta.url);
 
@@ -23,7 +22,6 @@ const ICON_SETS = {
   "game-icons": gameIcons,
   fluent,
   "system-uicons": systemUicons,
-  weui,
 };
 
 // getTechIcon key -> iconify source. Keep alphabetized by key.
@@ -31,7 +29,7 @@ const ICON_SOURCES = {
   algolia: "simple-icons:algolia",
   aws: "simple-icons:amazonwebservices",
   betterauth: "simple-icons:betterauth",
-  chainlog: "system-uicons:chain",
+  chain: "system-uicons:chain",
   codex: "simple-icons:openai",
   cursor: "simple-icons:cursor",
   drizzle: "simple-icons:drizzle",
@@ -63,7 +61,6 @@ const ICON_SOURCES = {
   typescript: "simple-icons:typescript",
   vercel: "simple-icons:vercel",
   vite: "simple-icons:vite",
-  wishswipe: "weui:shop-outlined",
 };
 
 // Brands with no iconify entry get hand-authored bodies (fill/stroke currentColor).

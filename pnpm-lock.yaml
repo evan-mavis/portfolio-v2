@@ -242,9 +242,6 @@ importers:
       '@iconify-json/system-uicons':
         specifier: ^1.2.4
         version: 1.2.4
-      '@iconify-json/weui':
-        specifier: ^1.2.4
-        version: 1.2.4
       '@iconify/utils':
         specifier: ^3.1.7
         version: 3.1.7
@@ -576,9 +573,6 @@ packages:
 
   '@iconify-json/system-uicons@1.2.4':
     resolution: {integrity: sha512-9WB9dmEm+TRCXI5Ml2IY8zQAPZES8euKxY0VOaf8D6E6ZaEr7ztO6DChMlGg7qWECs3m3FjFUqNgBx8ZpB+djw==}
-
-  '@iconify-json/weui@1.2.4':
-    resolution: {integrity: sha512-11WOzuH81FokN34N2WYg/bRQ+5ewrIrzVfN4RhWxj3Xr37/eYmqb5SeC6EXpmH8yi+d8tLBdmPxbF41bIhrdxg==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -4286,10 +4280,6 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/system-uicons@1.2.4':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify-json/weui@1.2.4':
     dependencies:
       '@iconify/types': 2.0.0
 

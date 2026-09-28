@@ -58,7 +58,6 @@
     "@iconify-json/material-symbols-light": "^1.2.94",
     "@iconify-json/simple-icons": "^1.2.97",
     "@iconify-json/system-uicons": "^1.2.4",
-    "@iconify-json/weui": "^1.2.4",
     "@iconify/utils": "^3.1.7",
     "@next/bundle-analyzer": "^16.3.6",
     "@playwright/test": "^1.63.0",

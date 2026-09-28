@@ -11,8 +11,8 @@ The site has no auth, database, or required env vars, so it can always run local
 2. Health: `curl -s localhost:3000/api/health`. Expect `"status":"ok"` and an `X-Request-ID` header (`curl -si`).
 3. Automated pass: `pnpm exec playwright install chromium` (once), then `pnpm run test:e2e`. It must pass.
 4. Manual pass in a browser (agent-browser or Playwright):
-   - `/`: the tree fades in, with `evan mavis/` and the job title expanded.
-   - Click the expand toggle (top-right, first button). Every folder opens (`career/`, `my tech stack/`, `projects/`).
+   - `/`: the tree renders instantly, with `evan mavis/` and the job title expanded.
+   - Click the expand toggle (top-right, first button). Every folder opens (`career/`, `tech i use/` and its subfolders, `interesting stuff/`).
    - Click the theme toggle. The page switches between light and dark.
    - Click the avatar. It opens full-screen. Click it again to close.
    - Open `/travel` and `/food`. Images load and there are no broken tiles. **Back** returns to `/`.
