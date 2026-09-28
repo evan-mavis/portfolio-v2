@@ -19,6 +19,7 @@
     "cpd": "jscpd",
     "analyze": "ANALYZE=true next build --webpack",
     "icons:generate": "node scripts/generate-icons.mjs",
+    "images:optimize": "node scripts/optimize-images.mjs",
     "docs:check": "node scripts/check-agents-md.mjs",
     "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run knip && pnpm run cpd && pnpm run docs:check && pnpm run test:coverage",
     "prepare": "husky"

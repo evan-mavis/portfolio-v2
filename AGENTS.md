@@ -11,21 +11,22 @@ Personal portfolio site for Evan Mavis. Next.js 16 (App Router), React 19, TypeS
 
 ## Commands
 
-| Task                      | Command                                                                |
-| ------------------------- | ---------------------------------------------------------------------- |
-| Dev server                | `pnpm run dev`                                                         |
-| Production build          | `pnpm run build` then `pnpm run start`                                 |
-| Format / check formatting | `pnpm run format` / `pnpm run format:check`                            |
-| Lint                      | `pnpm run lint`                                                        |
-| Type check                | `pnpm run typecheck`                                                   |
-| Unit tests                | `pnpm test` (list only: `pnpm exec vitest list`)                       |
-| Unit tests + coverage     | `pnpm run test:coverage` (60% minimum, enforced)                       |
-| E2E tests                 | `pnpm exec playwright install chromium` once, then `pnpm run test:e2e` |
-| Unused code / deps        | `pnpm run knip`                                                        |
-| Duplicate code            | `pnpm run cpd`                                                         |
-| Bundle analysis           | `pnpm run analyze`                                                     |
-| Regenerate bundled icons  | `pnpm run icons:generate`                                              |
-| Everything CI runs        | `pnpm run check`                                                       |
+| Task                       | Command                                                                |
+| -------------------------- | ---------------------------------------------------------------------- |
+| Dev server                 | `pnpm run dev`                                                         |
+| Production build           | `pnpm run build` then `pnpm run start`                                 |
+| Format / check formatting  | `pnpm run format` / `pnpm run format:check`                            |
+| Lint                       | `pnpm run lint`                                                        |
+| Type check                 | `pnpm run typecheck`                                                   |
+| Unit tests                 | `pnpm test` (list only: `pnpm exec vitest list`)                       |
+| Unit tests + coverage      | `pnpm run test:coverage` (60% minimum, enforced)                       |
+| E2E tests                  | `pnpm exec playwright install chromium` once, then `pnpm run test:e2e` |
+| Unused code / deps         | `pnpm run knip`                                                        |
+| Duplicate code             | `pnpm run cpd`                                                         |
+| Bundle analysis            | `pnpm run analyze`                                                     |
+| Regenerate bundled icons   | `pnpm run icons:generate`                                              |
+| Re-encode oversized photos | `pnpm run images:optimize`                                             |
+| Everything CI runs         | `pnpm run check`                                                       |
 
 The pre-commit hook (Husky) runs a file-size check, Prettier + ESLint on staged files, and the type check. Do not bypass it with `--no-verify`.
 

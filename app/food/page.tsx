@@ -266,13 +266,14 @@ export default function FoodPage() {
                         alt={image.alt}
                         width={enlargedImage === image.src ? 300 : 80}
                         height={enlargedImage === image.src ? 300 : 80}
+                        sizes={enlargedImage === image.src ? "300px" : "80px"}
+                        priority={tierType === "tier-s"}
                         className={`rounded-lg transition-all cursor-pointer ${
                           enlargedImage === image.src
                             ? "w-[300px] h-[300px]"
                             : "w-20 h-20"
                         }`}
                         onDoubleClick={() => toggleEnlarge(image.src)}
-                        quality={95}
                       />
                       {enlargedImage === image.src && (
                         <p className="text-white text-center text-sm mt-2 italic">
