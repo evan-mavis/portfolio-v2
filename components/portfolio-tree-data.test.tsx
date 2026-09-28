@@ -51,7 +51,9 @@ function findFile(nodes: TreeNode[], value: string): TreeFileNode | undefined {
 }
 
 function labelText(label: ReactNode): string {
-  return renderToStaticMarkup(<>{label}</>).replace(/<[^>]*>/g, "");
+  const container = document.createElement("div");
+  container.innerHTML = renderToStaticMarkup(<>{label}</>);
+  return container.textContent ?? "";
 }
 
 function collectLabels(nodes: TreeNode[]): string[] {
