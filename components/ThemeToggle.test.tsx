@@ -22,7 +22,7 @@ describe("ThemeToggle", () => {
   it("is disabled until the theme resolves on the client", () => {
     mockTheme(undefined);
     render(<ThemeToggle />);
-    expect(screen.getByRole("button", { name: "Toggle theme" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "toggle theme" })).toBeDisabled();
   });
 
   it.each([
@@ -32,7 +32,7 @@ describe("ThemeToggle", () => {
   ])("switches from %s to %s", (theme, resolved, next) => {
     mockTheme(theme, resolved);
     render(<ThemeToggle />);
-    fireEvent.click(screen.getByRole("button", { name: "Toggle theme" }));
+    fireEvent.click(screen.getByRole("button", { name: "toggle theme" }));
     expect(setTheme).toHaveBeenCalledWith(next);
   });
 });

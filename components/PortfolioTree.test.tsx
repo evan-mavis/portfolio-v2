@@ -150,4 +150,12 @@ describe("PortfolioTree", () => {
     const email = screen.getAllByRole("link", { name: "email" })[0];
     expect(email.getAttribute("href")).toMatch(/^mailto:/);
   });
+
+  it("keeps the mailto subject fully lowercase", () => {
+    renderTree();
+    const email = screen.getAllByRole("link", { name: "email" })[0];
+    const href = decodeURIComponent(email.getAttribute("href") ?? "");
+    expect(href).toContain("subject=make it interesting :)");
+    expect(href).not.toMatch(/[A-Z]/);
+  });
 });

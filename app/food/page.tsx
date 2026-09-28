@@ -12,175 +12,175 @@ interface FoodImage {
 }
 
 const sTierImages: FoodImage[] = [
-  { src: "/japan-osaka-scallop.jpeg", alt: "Scallop - Osaka, Japan" },
-  { src: "/japan-kyoto-ramen.jpeg", alt: "Ramen - Kyoto, Japan" },
-  { src: "/japan-tokyo-tuna-market.jpeg", alt: "Tuna Market - Tokyo, Japan" },
-  { src: "/japan-tokyo-wagyu.jpeg", alt: "Wagyu Beef - Tokyo, Japan" },
+  { src: "/japan-osaka-scallop.jpeg", alt: "scallop - osaka, japan" },
+  { src: "/japan-kyoto-ramen.jpeg", alt: "ramen - kyoto, japan" },
+  { src: "/japan-tokyo-tuna-market.jpeg", alt: "tuna market - tokyo, japan" },
+  { src: "/japan-tokyo-wagyu.jpeg", alt: "wagyu beef - tokyo, japan" },
   {
     src: "/japan-osaka-a5-kobe-wagyu-skewers.jpeg",
-    alt: "A5 Kobe Wagyu Skewers - Osaka, Japan",
+    alt: "a5 kobe wagyu skewers - osaka, japan",
   },
   {
     src: "/bali-ubud-dragon-fruit-bfast-bowl.jpeg",
-    alt: "Dragon Fruit Breakfast Bowl - Ubud, Bali",
+    alt: "dragon fruit breakfast bowl - ubud, bali",
   },
-  { src: "/japan-osaka-fatty-toro.jpeg", alt: "Fatty Toro - Osaka, Japan" },
+  { src: "/japan-osaka-fatty-toro.jpeg", alt: "fatty toro - osaka, japan" },
   {
     src: "/vietnam-hoi-an-cao-lau-noodles.jpeg",
-    alt: "Cao Lau Noodles - Hoi An, Vietnam",
+    alt: "cao lau noodles - hoi an, vietnam",
   },
   {
     src: "/bali-uluwatu-mie-goreng-and-pork-buns.jpeg",
-    alt: "Mie Goreng and Pork Buns - Uluwatu, Bali",
+    alt: "mie goreng and pork buns - uluwatu, bali",
   },
-  { src: "/japan-tokyo-ramen.jpeg", alt: "Ramen - Tokyo, Japan" },
+  { src: "/japan-tokyo-ramen.jpeg", alt: "ramen - tokyo, japan" },
   {
     src: "/vietnam-tam-coc-indian.jpeg",
-    alt: "Tikka Masala - Tam Coc, Vietnam",
+    alt: "tikka masala - tam coc, vietnam",
   },
 ];
 
 const aTierImages: FoodImage[] = [
-  { src: "/japan-kyoto-wagyu-night.jpeg", alt: "Wagyu Night! - Kyoto, Japan" },
+  { src: "/japan-kyoto-wagyu-night.jpeg", alt: "wagyu night! - kyoto, japan" },
   {
     src: "/bali-ubud-breakfast-scramble.jpeg",
-    alt: "Chili Egg Scramble - Ubud, Bali",
+    alt: "chili egg scramble - ubud, bali",
   },
-  { src: "/japan-osaka-nigiri.jpeg", alt: "Nigiri - Osaka, Japan" },
-  { src: "/bali-uluwatu-potstickers.jpeg", alt: "Potstickers - Uluwatu, Bali" },
+  { src: "/japan-osaka-nigiri.jpeg", alt: "nigiri - osaka, japan" },
+  { src: "/bali-uluwatu-potstickers.jpeg", alt: "potstickers - uluwatu, bali" },
   {
     src: "/japan-tokyo-omakase-unagi.jpeg",
-    alt: "Omakase, Unagi - Tokyo, Japan",
+    alt: "omakase, unagi - tokyo, japan",
   },
-  { src: "/japan-tokyo-nigiri.jpeg", alt: "Nigiri - Tokyo, Japan" },
-  { src: "/japan-osaka-dumplings.jpeg", alt: "Dumplings - Osaka, Japan" },
+  { src: "/japan-tokyo-nigiri.jpeg", alt: "nigiri - tokyo, japan" },
+  { src: "/japan-osaka-dumplings.jpeg", alt: "dumplings - osaka, japan" },
   {
     src: "/vietnam-ho-chi-minh-pho-dau.jpeg",
-    alt: "Pho Dau - Ho Chi Minh City, Vietnam",
+    alt: "pho dau - ho chi minh city, vietnam",
   },
   {
     src: "/vietnam-hanoi-rich-dipping-noodles.jpeg",
-    alt: "Rich Dipping Noodles - Hanoi, Vietnam",
+    alt: "rich dipping noodles - hanoi, vietnam",
   },
-  { src: "/bali-uluwatu-mie-goreng.jpeg", alt: "Mie Goreng - Uluwatu, Bali" },
-  { src: "/japan-kyoto-ramen-2.jpeg", alt: "Ramen - Kyoto, Japan" },
+  { src: "/bali-uluwatu-mie-goreng.jpeg", alt: "mie goreng - uluwatu, bali" },
+  { src: "/japan-kyoto-ramen-2.jpeg", alt: "ramen - kyoto, japan" },
 ];
 
 const bTierImages: FoodImage[] = [
-  { src: "/bali-ubud-indian.jpeg", alt: "Tikka Masala - Ubud, Bali" },
+  { src: "/bali-ubud-indian.jpeg", alt: "tikka masala - ubud, bali" },
   {
     src: "/japan-kyoto-cold-soba-and-tempura.jpeg",
-    alt: "Cold Soba and Tempura - Kyoto, Japan",
+    alt: "cold soba and tempura - kyoto, japan",
   },
-  { src: "/japan-tokyo-ichiran.jpeg", alt: "Ichiran Ramen - Tokyo, Japan" },
+  { src: "/japan-tokyo-ichiran.jpeg", alt: "ichiran ramen - tokyo, japan" },
   {
     src: "/japan-osaka-cold-breakfast-noodles.jpeg",
-    alt: "Cold Breakfast Noodles - Osaka, Japan",
+    alt: "cold breakfast noodles - osaka, japan",
   },
   {
     src: "/vietnam-ho-chi-minh-pho-cau.jpeg",
-    alt: "Pho Cau - Ho Chi Minh City, Vietnam",
+    alt: "pho cau - ho chi minh city, vietnam",
   },
-  { src: "/south-korea-hotpot.jpeg", alt: "Hotpot - South Korea" },
+  { src: "/south-korea-hotpot.jpeg", alt: "hotpot - south korea" },
   {
     src: "/vietnam-hoi-an-white-rose-dumplings.jpeg",
-    alt: "White Rose Dumplings - Hoi An, Vietnam",
+    alt: "white rose dumplings - hoi an, vietnam",
   },
-  { src: "/japan-kyoto-potstickers.jpeg", alt: "Potstickers - Kyoto, Japan" },
-  { src: "/bali-uluwatu-green-curry.jpeg", alt: "Green Curry - Uluwatu, Bali" },
-  { src: "/vietnam-hanoi-pho.jpeg", alt: "Pho - Hanoi, Vietnam" },
+  { src: "/japan-kyoto-potstickers.jpeg", alt: "potstickers - kyoto, japan" },
+  { src: "/bali-uluwatu-green-curry.jpeg", alt: "green curry - uluwatu, bali" },
+  { src: "/vietnam-hanoi-pho.jpeg", alt: "pho - hanoi, vietnam" },
   {
     src: "/bali-ubud-thai-stir-fry.jpeg",
-    alt: "Chicken Stir Fry - Ubud, Bali",
+    alt: "chicken stir fry - ubud, bali",
   },
-  { src: "/bali-ubud-mie-goreng.jpeg", alt: "Mie Goreng - Ubud, Bali" },
+  { src: "/bali-ubud-mie-goreng.jpeg", alt: "mie goreng - ubud, bali" },
 ];
 
 const cTierImages: FoodImage[] = [
   {
     src: "/vietnam-hoi-an-white-rose-dumplings-2.jpeg",
-    alt: "White Rose Dumplings - Hoi An, Vietnam",
+    alt: "white rose dumplings - hoi an, vietnam",
   },
   {
     src: "/japan-kyoto-conveyor-belt-sushi.jpeg",
-    alt: "Conveyor Belt Sushi - Kyoto, Japan",
+    alt: "conveyor belt sushi - kyoto, japan",
   },
-  { src: "/bali-ubud-pad-thai.jpeg", alt: "Pad Thai - Ubud, Bali" },
+  { src: "/bali-ubud-pad-thai.jpeg", alt: "pad thai - ubud, bali" },
   {
     src: "/vietnam-hanoi-chili-chicken.jpeg",
-    alt: "Chili Chicken - Hanoi, Vietnam",
+    alt: "chili chicken - hanoi, vietnam",
   },
   {
     src: "/vietnam-hanoi-beef-and-veg.jpeg",
-    alt: "Beef and Veg - Hanoi, Vietnam",
+    alt: "beef and veg - hanoi, vietnam",
   },
   {
     src: "/vietnam-hoi-an-spring-rolls.jpeg",
-    alt: "Spring Rolls - Hoi An, Vietnam",
+    alt: "spring rolls - hoi an, vietnam",
   },
-  { src: "/japan-tokyo-taiyaki.jpeg", alt: "Taiyaki - Tokyo, Japan" },
+  { src: "/japan-tokyo-taiyaki.jpeg", alt: "taiyaki - tokyo, japan" },
   {
     src: "/vietnam-hanoi-spring-rolls.jpeg",
-    alt: "Spring Rolls - Hanoi, Vietnam",
+    alt: "spring rolls - hanoi, vietnam",
   },
   {
     src: "/bali-uluwatu-beef-noodles.jpeg",
-    alt: "Beef Noodles - Uluwatu, Bali",
+    alt: "beef noodles - uluwatu, bali",
   },
-  { src: "/bali-ubud-chili-noodles.jpeg", alt: "Chili Noodles - Ubud, Bali" },
+  { src: "/bali-ubud-chili-noodles.jpeg", alt: "chili noodles - ubud, bali" },
   {
     src: "/vietnam-hoi-an-beef-noodle-soup.jpeg",
-    alt: "Beef Noodle Soup - Hoi An, Vietnam",
+    alt: "beef noodle soup - hoi an, vietnam",
   },
   {
     src: "/bali-uluwatu-pork-bao-buns.jpeg",
-    alt: "Pork Bao Buns - Uluwatu, Bali",
+    alt: "pork bao buns - uluwatu, bali",
   },
-  { src: "/japan-osaka-okonomiyaki.jpeg", alt: "Okonomiyaki - Osaka, Japan" },
+  { src: "/japan-osaka-okonomiyaki.jpeg", alt: "okonomiyaki - osaka, japan" },
 ];
 
 const dTierImages: FoodImage[] = [
   {
     src: "/bali-uluwatu-dragon-fruit-smoothie.jpeg",
-    alt: "Dragon Fruit Smoothie - Uluwatu, Bali",
+    alt: "dragon fruit smoothie - uluwatu, bali",
   },
-  { src: "/vietnam-hoi-an-banh-mi.jpeg", alt: "Banh Mi - Hoi An, Vietnam" },
-  { src: "/bali-ubud-chili-fries.jpeg", alt: "Chili Fries - Ubud, Bali" },
-  { src: "/japan-osaka-takoyaki.jpeg", alt: "Takoyaki - Osaka, Japan" },
-  { src: "/japan-tokyo-real-wasabi.jpeg", alt: "Real Wasabi - Tokyo, Japan" },
+  { src: "/vietnam-hoi-an-banh-mi.jpeg", alt: "banh mi - hoi an, vietnam" },
+  { src: "/bali-ubud-chili-fries.jpeg", alt: "chili fries - ubud, bali" },
+  { src: "/japan-osaka-takoyaki.jpeg", alt: "takoyaki - osaka, japan" },
+  { src: "/japan-tokyo-real-wasabi.jpeg", alt: "real wasabi - tokyo, japan" },
   {
     src: "/vietnam-ho-chi-minh-banh-mi.jpeg",
-    alt: "Banh Mi - Ho Chi Minh City, Vietnam",
+    alt: "banh mi - ho chi minh city, vietnam",
   },
   {
     src: "/vietnam-ho-chi-minh-banh-mi-2.jpeg",
-    alt: "Banh Mi - Ho Chi Minh City, Vietnam",
+    alt: "banh mi - ho chi minh city, vietnam",
   },
-  { src: "/bali-uluwatu-breakfast.jpeg", alt: "Egg Breakfast - Uluwatu, Bali" },
-  { src: "/bali-uluwatu-coconut.jpeg", alt: "Coconut - Uluwatu, Bali" },
+  { src: "/bali-uluwatu-breakfast.jpeg", alt: "egg breakfast - uluwatu, bali" },
+  { src: "/bali-uluwatu-coconut.jpeg", alt: "coconut - uluwatu, bali" },
   {
     src: "/japan-osaka-7-11-rice-roll.jpeg",
-    alt: "7-11 Rice Roll - Osaka, Japan",
+    alt: "7-11 rice roll - osaka, japan",
   },
   {
     src: "/japan-osaka-piplup-ice-cream.jpeg",
-    alt: "Ice Cream - Osaka, Japan",
+    alt: "ice cream - osaka, japan",
   },
   {
     src: "/vietnam-ho-chi-minh-street-food.jpeg",
-    alt: "Street Food - Ho Chi Minh City, Vietnam",
+    alt: "street food - ho chi minh city, vietnam",
   },
 ];
 
 const fTierImages: FoodImage[] = [
-  { src: "/vietnam-hanoi-cobra.jpeg", alt: "Cobra - Hanoi, Vietnam" },
+  { src: "/vietnam-hanoi-cobra.jpeg", alt: "cobra - hanoi, vietnam" },
   {
     src: "/vietnam-hanoi-snake-spring-rolls.jpeg",
-    alt: "Bamboo Snake Spring Rolls - Hanoi, Vietnam",
+    alt: "bamboo snake spring rolls - hanoi, vietnam",
   },
   {
     src: "/vietnam-ho-chi-minh-heart-meat.jpeg",
-    alt: "Noodles w/ Heart Meat - Ho Chi Minh City, Vietnam",
+    alt: "noodles w/ heart meat - ho chi minh city, vietnam",
   },
 ];
 
@@ -208,12 +208,12 @@ export default function FoodPage() {
 
   const getTierConfig = (tier: TierType) => {
     const configs = {
-      "tier-s": { label: "S", bgColor: "bg-red-300" },
-      "tier-a": { label: "A", bgColor: "bg-orange-300" },
-      "tier-b": { label: "B", bgColor: "bg-yellow-300" },
-      "tier-c": { label: "C", bgColor: "bg-green-300" },
-      "tier-d": { label: "D", bgColor: "bg-blue-300" },
-      "tier-f": { label: "F", bgColor: "bg-purple-300" },
+      "tier-s": { label: "s", bgColor: "bg-red-300" },
+      "tier-a": { label: "a", bgColor: "bg-orange-300" },
+      "tier-b": { label: "b", bgColor: "bg-yellow-300" },
+      "tier-c": { label: "c", bgColor: "bg-green-300" },
+      "tier-d": { label: "d", bgColor: "bg-blue-300" },
+      "tier-f": { label: "f", bgColor: "bg-purple-300" },
     };
     return configs[tier];
   };
@@ -224,14 +224,14 @@ export default function FoodPage() {
       title={
         <>
           <h1 className="text-3xl font-bold mb-4">
-            My Food Trip to Bali, Vietnam, and Japan... Ranked!
+            my food trip to bali, vietnam, and japan... ranked!
           </h1>
           <h2 className="text-lg mb-2">
-            <em className="text-yellow-400">Double click</em> each picture for
+            <em className="text-yellow-400">double click</em> each picture for
             more details.
           </h2>
           <h2 className="text-base opacity-80">
-            DISCLAIMER: Everything was amazing except for F tier.
+            disclaimer: everything was amazing except for f tier.
           </h2>
         </>
       }

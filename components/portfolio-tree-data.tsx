@@ -48,7 +48,7 @@ function techFile(value: string, techIcon: string): TreeFileNode {
 }
 
 const EMAIL_HREF = `mailto:evanmavis3@gmail.com?subject=${encodeURIComponent(
-  "Make it interesting :)",
+  "make it interesting :)",
 )}`;
 
 export const PORTFOLIO_TREE_DATA: TreeNode[] = [
@@ -68,9 +68,9 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
         value: "full-stack-web-developer",
         label: (
           <span className="text-left leading-normal pl-2 md:pl-0 inline-block">
-            full stack web developer based out of NYC and a{" "}
+            full stack web developer based out of nyc and a{" "}
             <span className="text-[#B8860B] dark:text-primary font-semibold">
-              CU Boulder alum
+              cu boulder alum
             </span>
             /
           </span>
@@ -88,7 +88,7 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
                 value: "airgoods",
                 label: (
                   <>
-                    <span className={YEAR_CLASS}>2026-Present</span> airgoods •
+                    <span className={YEAR_CLASS}>2026-present</span> airgoods •
                     software engineer/
                   </>
                 ),
@@ -130,7 +130,7 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
                 children: [
                   descriptionFile(
                     "kpmg-fulltime-desc",
-                    "led a sub-team of 5 US devs automating transfer pricing reports",
+                    "led a sub-team of 5 us devs automating transfer pricing reports",
                   ),
                 ],
               },
@@ -161,9 +161,9 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
                 children: [
                   descriptionFile(
                     "education-studies-desc",
-                    "studied CS, finance, business analytics, and info management",
+                    "studied cs, finance, business analytics, and info management",
                   ),
-                  descriptionFile("education-gpa-desc", "GPA: 3.95 🤓"),
+                  descriptionFile("education-gpa-desc", "gpa: 3.95 🤓"),
                   descriptionFile(
                     "education-skied-desc",
                     "skied most fridays!! 🎿",

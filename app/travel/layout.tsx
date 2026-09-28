@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Travel Gallery",
+  title: "travel gallery",
   description:
-    "A curated gallery of travel destinations I have visited including Bali, Vietnam, Japan, Italy, Costa Rica, and several states in the United States.",
+    "a curated gallery of travel destinations i have visited including bali, vietnam, japan, italy, costa rica, and several states in the united states.",
   openGraph: {
-    title: "Travel Gallery - Places You Should Visit",
+    title: "travel gallery - places you should visit",
     description:
-      "A curated gallery of beautiful travel destinations from around the world.",
+      "a curated gallery of beautiful travel destinations from around the world.",
     type: "website",
   },
 };

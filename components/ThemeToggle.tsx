@@ -22,7 +22,7 @@ export function ThemeToggle() {
     return (
       <Button variant="outline" size="icon" disabled>
         <Sun className="h-[1.2rem] w-[1.2rem]" />
-        <span className="sr-only">Toggle theme</span>
+        <span className="sr-only">toggle theme</span>
       </Button>
     );
   }
@@ -60,7 +60,7 @@ export function ThemeToggle() {
         }}
       />
 
-      <span className="sr-only">Toggle theme</span>
+      <span className="sr-only">toggle theme</span>
     </Button>
   );
 }

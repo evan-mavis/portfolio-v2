@@ -19,6 +19,7 @@ export default function ButtonsRow({
         variant="outline"
         pressed={isExpanded}
         onPressedChange={onExpandedChange}
+        aria-label="expand all folders"
         className="relative overflow-hidden touch-manipulation min-w-[44px] min-h-[44px]"
       >
         <Minimize

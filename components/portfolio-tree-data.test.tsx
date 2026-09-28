@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { GENERATED_ICONS } from "@/lib/icons-generated";
 import {
@@ -48,7 +50,27 @@ function findFile(nodes: TreeNode[], value: string): TreeFileNode | undefined {
   return undefined;
 }
 
+function labelText(label: ReactNode): string {
+  return renderToStaticMarkup(<>{label}</>).replace(/<[^>]*>/g, "");
+}
+
+function collectLabels(nodes: TreeNode[]): string[] {
+  return nodes.flatMap((node) =>
+    node.kind === "folder"
+      ? [labelText(node.label), ...collectLabels(node.children)]
+      : [labelText(node.label)],
+  );
+}
+
 describe("portfolio tree data", () => {
+  it("uses only lowercase characters in every tree label", () => {
+    const labels = collectLabels(PORTFOLIO_TREE_DATA);
+    expect(labels.length).toBeGreaterThan(0);
+    for (const label of labels) {
+      expect(label, `label "${label}" contains uppercase`).not.toMatch(/[A-Z]/);
+    }
+  });
+
   it("derives the folder value list from the tree data", () => {
     expect(ALL_FOLDER_VALUES).toEqual(collectFolderValues(PORTFOLIO_TREE_DATA));
   });

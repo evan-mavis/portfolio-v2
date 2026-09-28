@@ -22,7 +22,7 @@ export default function PageLayout({
         className="absolute top-4 left-4 z-50 flex items-center gap-2 text-primary hover:text-primary/80 transition-colors p-4"
       >
         <ArrowLeft className="w-6 h-6" />
-        <span className="text-lg">Back</span>
+        <span className="text-lg">back</span>
       </Link>
 
       <div className="w-full mt-16 relative z-10">

@@ -8,7 +8,7 @@ test("health endpoint reports ok", async ({ request }) => {
 
 test("home page expands the tree and navigates to travel", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle(/Evan Mavis/);
+  await expect(page).toHaveTitle(/evan mavis/);
 
   await page.getByRole("button", { pressed: false }).first().click();
   const travel = page.getByRole("link", { name: "travel", exact: true });
