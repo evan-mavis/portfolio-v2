@@ -1,10 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import ButtonsRow from "./ButtonsRow";
 import PortfolioTree from "./PortfolioTree";
 import { TreeStateProvider, useTreeStateContext } from "./TreeStateProvider";
-import { ALL_FOLDER_VALUES } from "./portfolio-tree-data";
-import { TREE_STORAGE_KEY } from "@/lib/tree-state";
 
 vi.mock("./ThemeToggle", () => ({ ThemeToggle: () => null }));
 
@@ -18,10 +16,6 @@ function renderIslands() {
 }
 
 describe("TreeStateProvider", () => {
-  beforeEach(() => {
-    window.localStorage.clear();
-  });
-
   it("shares expand-all state between the toggle and the tree", () => {
     renderIslands();
     expect(screen.queryByText(/airgoods • software engineer/)).toBeNull();
@@ -34,9 +28,6 @@ describe("TreeStateProvider", () => {
     expect(
       screen.getByRole("button", { name: "expand all folders" }),
     ).toHaveAttribute("aria-pressed", "true");
-    expect(
-      JSON.parse(window.localStorage.getItem(TREE_STORAGE_KEY) ?? "{}"),
-    ).toEqual({ expanded: ALL_FOLDER_VALUES, allExpanded: true });
   });
 
   it("collapses every folder when the expand-all toggle is released", () => {
@@ -48,20 +39,12 @@ describe("TreeStateProvider", () => {
     fireEvent.click(toggle);
 
     expect(screen.queryByText("career/")).toBeNull();
-    expect(
-      JSON.parse(window.localStorage.getItem(TREE_STORAGE_KEY) ?? "{}"),
-    ).toEqual({ expanded: [], allExpanded: false });
   });
 
-  it("restores the stored expansion after mount", () => {
-    window.localStorage.setItem(
-      TREE_STORAGE_KEY,
-      JSON.stringify({ expanded: ALL_FOLDER_VALUES, allExpanded: true }),
-    );
+  it("starts with the intro open", () => {
     renderIslands();
-    expect(
-      screen.getByText(/airgoods • software engineer/),
-    ).toBeInTheDocument();
+    expect(screen.getByText("career/")).toBeInTheDocument();
+    expect(screen.queryByText(/airgoods • software engineer/)).toBeNull();
   });
 
   it("throws when a consumer reads the context outside the provider", () => {

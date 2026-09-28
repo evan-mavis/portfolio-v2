@@ -9,6 +9,10 @@ test("health endpoint reports ok", async ({ request }) => {
 test("home page expands the tree and navigates to travel", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/evan mavis/);
+  await expect(page.getByText("career/")).toBeVisible();
+  await expect(page.getByText("tech i use/")).toBeVisible();
+  await expect(page.getByText("interesting stuff/")).toBeVisible();
+  await expect(page.getByText(/airgoods • software engineer/)).toHaveCount(0);
 
   await page.getByRole("button", { pressed: false }).first().click();
   const travel = page.getByRole("link", { name: "travel", exact: true });
@@ -27,6 +31,8 @@ test("home page expands the tree and navigates to travel", async ({ page }) => {
 
 test("closing the avatar leaves the tree alone", async ({ page }) => {
   await page.goto("/");
+  const root = page.locator("button[aria-expanded]").first();
+  const expanded = await root.getAttribute("aria-expanded");
   await page
     .getByRole("button", {
       name: "evan mavis avatar, opens full photo",
@@ -36,9 +42,27 @@ test("closing the avatar leaves the tree alone", async ({ page }) => {
   await expect(page.getByRole("img", { name: "evan mavis" })).toBeVisible();
   await page.locator(".backdrop-blur-md").click({ position: { x: 20, y: 20 } });
   await expect(page.getByRole("img", { name: "evan mavis" })).toHaveCount(0);
-  expect(
-    await page.evaluate(() => localStorage.getItem("portfolio-tree-state")),
-  ).toBeNull();
+  await expect(root).toHaveAttribute("aria-expanded", expanded ?? "true");
+});
+
+test("opening the tree keeps its left edge still", async ({ page }) => {
+  await page.goto("/");
+  const root = page.locator("button[aria-expanded]").first();
+  await root.click();
+  const before = await root.boundingBox();
+  await root.click();
+  const after = await root.boundingBox();
+  expect(before).not.toBeNull();
+  expect(after).not.toBeNull();
+  expect(Math.abs(after!.x - before!.x)).toBeLessThan(1);
+});
+
+test("reload starts with the intro folders open", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("button[aria-expanded]").first().click();
+  await page.reload();
+  await expect(page.getByText("career/")).toBeVisible();
+  await expect(page.getByText("tech i use/")).toBeVisible();
 });
 
 test("the favicon uses the mandalorian avatar", async ({ page }) => {

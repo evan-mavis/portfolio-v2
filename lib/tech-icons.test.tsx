@@ -24,11 +24,11 @@ describe("getTechIcon", () => {
     expect(svg.getAttribute("class")).not.toContain("lucide");
   });
 
-  it("uses factory's official logo at a readable size", () => {
-    const { container } = render(<>{getTechIcon("factory")}</>);
-    const image = container.querySelector("img");
-    expect(image).toHaveAttribute("src", "/factory-logo.svg");
-    expect(image).toHaveClass("h-[1.4em]");
+  it("renders factory's mark like the other icons", () => {
+    const svg = renderIcon("factory");
+    expect(svg).toHaveAttribute("viewBox", "0 0 320 320");
+    expect(svg).toHaveClass("w-[1em]", "h-[1em]");
+    expect(svg.querySelector("rect")).toBeNull();
   });
 
   it("falls back to the lucide file icon for unknown names", () => {
@@ -57,6 +57,7 @@ describe("getTechIcon", () => {
     "git",
     "cursor",
     "codex",
+    "factory",
     "obsidian",
     "excalidraw",
     "linear",

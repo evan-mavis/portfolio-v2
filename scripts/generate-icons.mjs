@@ -1,5 +1,5 @@
 // bundle iconify art for the browser. run `pnpm run icons:generate` after edits.
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { getIconData, iconToSVG } from "@iconify/utils";
 import { format, resolveConfig } from "prettier";
 import fileIcons from "@iconify-json/file-icons/icons.json" with { type: "json" };
@@ -11,6 +11,12 @@ import simpleIcons from "@iconify-json/simple-icons/icons.json" with { type: "js
 import systemUicons from "@iconify-json/system-uicons/icons.json" with { type: "json" };
 
 const OUTPUT_FILE = new URL("../lib/icons-generated.ts", import.meta.url);
+const factorySvg = await readFile(
+  new URL("../public/factory-logo.svg", import.meta.url),
+  "utf8",
+);
+const factoryPath = factorySvg.match(/<path d="([^"]+)" fill="#FAFAFA"/)?.[1];
+if (!factoryPath) throw new Error("factory logo path not found");
 
 const ICON_SETS = {
   "simple-icons": simpleIcons,
@@ -63,6 +69,11 @@ const ICON_SOURCES = {
 
 // icons without an iconify entry live here.
 const CUSTOM_ICONS = {
+  factory: {
+    body: `<g transform="translate(-94 -94)"><path d="${factoryPath}"/></g>`,
+    width: 320,
+    height: 320,
+  },
   // inngest has no simple-icons entry.
   inngest: {
     body: '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M2 12h4l3-8 4 16 3-8h4"/>',

@@ -25,7 +25,7 @@ put it in `public/`, reference it from the travel or food page, and run `pnpm ru
 
 ## reset a stuck tree
 
-clear the `portfolio-tree-state` key in your browser's `localStorage`. the tree returns to its default folders.
+reload the page. the tree starts with the intro open.
 
 ## security alert
 

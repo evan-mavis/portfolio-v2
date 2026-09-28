@@ -1,53 +1,29 @@
 import { act, renderHook } from "@testing-library/react";
-import { beforeEach, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   ALL_FOLDER_VALUES,
   DEFAULT_EXPANDED_ITEMS,
 } from "@/components/portfolio-tree-data";
-import { readTreeState, TREE_STORAGE_KEY } from "./tree-state";
 import { useTreeState } from "./use-tree-state";
 
 describe("useTreeState", () => {
-  beforeEach(() => {
-    window.localStorage.clear();
-  });
-
-  it("starts with the default expansion when storage is empty", () => {
+  it("starts with the root and job title open", () => {
     const { result } = renderHook(() => useTreeState());
     expect(result.current.expandedItems).toEqual(DEFAULT_EXPANDED_ITEMS);
     expect(result.current.allExpanded).toBe(false);
-    expect(readTreeState()).toBeNull();
   });
 
-  it("restores stored expansion state on mount", () => {
+  it("ignores a collapsed state left in browser storage", () => {
     window.localStorage.setItem(
-      TREE_STORAGE_KEY,
-      JSON.stringify({
-        expanded: ["evan-mavis", "career"],
-        allExpanded: false,
-      }),
+      "portfolio-tree-state",
+      JSON.stringify({ expanded: [], allExpanded: false }),
     );
     const { result } = renderHook(() => useTreeState());
-    expect(result.current.expandedItems).toEqual(["evan-mavis", "career"]);
+    expect(result.current.expandedItems).toEqual(DEFAULT_EXPANDED_ITEMS);
     expect(result.current.allExpanded).toBe(false);
   });
 
-  it("restores the all-expanded flag on mount", () => {
-    window.localStorage.setItem(
-      TREE_STORAGE_KEY,
-      JSON.stringify({ expanded: ALL_FOLDER_VALUES, allExpanded: true }),
-    );
-    const { result } = renderHook(() => useTreeState());
-    expect(result.current.allExpanded).toBe(true);
-  });
-
-  it("falls back to defaults when stored state is corrupt", () => {
-    window.localStorage.setItem(TREE_STORAGE_KEY, "{not json");
-    const { result } = renderHook(() => useTreeState());
-    expect(result.current.expandedItems).toEqual(DEFAULT_EXPANDED_ITEMS);
-  });
-
-  it("writes through on every folder expansion change", () => {
+  it("keeps folder changes in memory", () => {
     const { result } = renderHook(() => useTreeState());
     act(() => {
       result.current.handleExpandedItemsChange([
@@ -55,10 +31,10 @@ describe("useTreeState", () => {
         "interesting-stuff",
       ]);
     });
-    expect(readTreeState()).toEqual({
-      expanded: ["evan-mavis", "interesting-stuff"],
-      allExpanded: false,
-    });
+    expect(result.current.expandedItems).toEqual([
+      "evan-mavis",
+      "interesting-stuff",
+    ]);
   });
 
   it("marks allExpanded when every folder is expanded manually", () => {
@@ -67,10 +43,6 @@ describe("useTreeState", () => {
       result.current.handleExpandedItemsChange([...ALL_FOLDER_VALUES]);
     });
     expect(result.current.allExpanded).toBe(true);
-    expect(readTreeState()).toEqual({
-      expanded: [...ALL_FOLDER_VALUES],
-      allExpanded: true,
-    });
   });
 
   it("clears allExpanded when a folder is collapsed after expand-all", () => {
@@ -85,25 +57,17 @@ describe("useTreeState", () => {
       result.current.handleExpandedItemsChange(collapsedOne);
     });
     expect(result.current.allExpanded).toBe(false);
-    expect(readTreeState()).toEqual({
-      expanded: collapsedOne,
-      allExpanded: false,
-    });
   });
 
-  it("expand-all writes every folder with allExpanded true", () => {
+  it("expand-all opens every folder", () => {
     const { result } = renderHook(() => useTreeState());
     act(() => {
       result.current.handleAllExpandedChange(true);
     });
     expect(result.current.expandedItems).toEqual(ALL_FOLDER_VALUES);
-    expect(readTreeState()).toEqual({
-      expanded: ALL_FOLDER_VALUES,
-      allExpanded: true,
-    });
   });
 
-  it("collapse-all writes an empty expansion with allExpanded false", () => {
+  it("collapse-all closes every folder", () => {
     const { result } = renderHook(() => useTreeState());
     act(() => {
       result.current.handleAllExpandedChange(true);
@@ -112,6 +76,5 @@ describe("useTreeState", () => {
       result.current.handleAllExpandedChange(false);
     });
     expect(result.current.expandedItems).toEqual([]);
-    expect(readTreeState()).toEqual({ expanded: [], allExpanded: false });
   });
 });

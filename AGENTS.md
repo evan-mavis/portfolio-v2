@@ -29,8 +29,8 @@ open [localhost:3000](http://localhost:3000). no env vars, database, or auth nee
 
 - `app/` has `/`, `/travel`, `/food`, and `/api/health`.
 - `components/` has the tree, avatar, and ui pieces.
-- `lib/tree-state.ts` reads and writes the saved tree state. `TreeStateProvider` stays mounted in `app/layout.tsx` across pages.
-- `public/` has photos, the resume, and the official factory logo. keep new images under 10 mb.
+- `TreeStateProvider` stays mounted in `app/layout.tsx` across pages. reloads start with the intro open.
+- `public/` has photos, the resume, and factory's source logo. keep new images under 10 mb.
 - `lib/icons-generated.ts` comes from `scripts/generate-icons.mjs`. edit the source list, then run `pnpm run icons:generate`. don't edit the generated file.
 - unit tests sit next to code. browser tests live in `e2e/`.
 

@@ -7,10 +7,8 @@ export default function Home() {
       <div className="absolute top-4 right-4 flex gap-2 items-center z-50">
         <ButtonsRow />
       </div>
-      <div className="flex w-full justify-center items-start ">
-        <div className="w-fit">
-          <PortfolioTree />
-        </div>
+      <div className="mx-auto w-full max-w-[1600px] md:w-4/5">
+        <PortfolioTree />
       </div>
     </main>
   );

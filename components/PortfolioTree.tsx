@@ -1,10 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Folder, Tree, File } from "./ui/file-tree";
 import { getTechIcon } from "@/lib/tech-icons";
-import { useMountEffect } from "@/lib/use-mount-effect";
 import {
   PORTFOLIO_TREE_DATA,
   type TreeFileNode,
@@ -110,35 +109,10 @@ function renderNode(node: TreeNode): React.ReactNode {
 export default function PortfolioTree() {
   const { expandedItems, handleExpandedItemsChange: onExpandedChange } =
     useTreeStateContext();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [minWidth, setMinWidth] = useState<number | undefined>(undefined);
   const [animate, setAnimate] = useState(false);
 
-  useMountEffect(() => {
-    // keep the widest tree width when folders close.
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const width = entry.contentRect.width;
-        setMinWidth((prev) => {
-          return prev === undefined ? width : Math.max(prev, width);
-        });
-      }
-    });
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
-    }
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  });
-
   return (
-    <div
-      ref={containerRef}
-      className="inline-flex items-start gap-4"
-      style={{ minWidth: minWidth ? `${minWidth}px` : undefined }}
-    >
+    <div className="inline-flex items-start gap-4">
       <Tree
         className="w-auto h-auto text-foreground dark:text-[#ffd48a] text-base lg:text-lg"
         expandedItems={expandedItems}
