@@ -213,10 +213,10 @@ export default function TravelPage() {
               ? index % 4 === 0
                 ? "self-center"
                 : index % 4 === 1
-                ? "self-end"
-                : index % 4 === 2
-                ? "self-center"
-                : "self-start"
+                  ? "self-end"
+                  : index % 4 === 2
+                    ? "self-center"
+                    : "self-start"
               : "";
 
             return (
@@ -226,8 +226,8 @@ export default function TravelPage() {
                   alignment === "self-start"
                     ? "self-start"
                     : alignment === "self-end"
-                    ? "self-end"
-                    : "self-center"
+                      ? "self-end"
+                      : "self-center"
                 }`}
               >
                 <figure className="flex flex-col items-center justify-center relative group transition-all duration-300 hover:scale-105">

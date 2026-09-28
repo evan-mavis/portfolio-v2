@@ -1,0 +1,28 @@
+name: Droid review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install Droid CLI
+        run: curl -fsSL https://app.factory.ai/cli | sh
+      - name: Review pull request
+        env:
+          FACTORY_API_KEY: ${{ secrets.FACTORY_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ~/.local/bin/droid exec --auto low \
+            "Review pull request #${{ github.event.pull_request.number }} against origin/${{ github.base_ref }}. Follow AGENTS.md. Post specific, actionable review comments with gh pr review. Report only real bugs, security issues, or convention violations."

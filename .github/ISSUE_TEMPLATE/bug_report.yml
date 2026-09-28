@@ -1,0 +1,41 @@
+name: Bug report
+description: Something on the site is broken or looks wrong
+labels: ["type: bug"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      placeholder: https://evan-mavis.dev/travel
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open /\n2. Click the expand toggle\n3. ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser / device
+      options:
+        [Chrome, Safari, Firefox, Edge, iOS Safari, Android Chrome, Other]
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        [
+          "P0 - site down",
+          "P1 - major feature broken",
+          "P2 - minor",
+          "P3 - cosmetic",
+        ]

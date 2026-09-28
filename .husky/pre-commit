@@ -1,0 +1,4 @@
+node scripts/check-file-size.mjs
+npx lint-staged
+npm run typecheck
+npm run docs:check

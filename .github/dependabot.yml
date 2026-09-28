@@ -1,0 +1,41 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    # Wait before adopting new releases to reduce supply-chain risk.
+    cooldown:
+      default-days: 7
+      semver-major-days: 14
+    open-pull-requests-limit: 5
+    labels: ["type: chore", "area: deps"]
+    groups:
+      next-react:
+        patterns:
+          [
+            "next",
+            "eslint-config-next",
+            "@next/*",
+            "react",
+            "react-dom",
+            "@types/react*",
+          ]
+      testing:
+        patterns:
+          [
+            "vitest",
+            "@vitest/*",
+            "@testing-library/*",
+            "@playwright/test",
+            "jsdom",
+          ]
+      radix:
+        patterns: ["@radix-ui/*"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    labels: ["type: chore", "area: infra"]

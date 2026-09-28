@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+build
+coverage
+public
+package-lock.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+next-env.d.ts

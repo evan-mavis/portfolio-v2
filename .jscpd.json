@@ -1,0 +1,9 @@
+{
+  "threshold": 5,
+  "minTokens": 70,
+  "reporters": ["console"],
+  "format": ["typescript", "tsx", "css"],
+  "path": ["app", "components", "lib"],
+  "ignore": ["**/components/ui/**", "**/*.test.*"],
+  "gitignore": true
+}

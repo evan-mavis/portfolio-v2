@@ -1,0 +1,38 @@
+name: Uptime
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check production health
+        id: check
+        run: |
+          for attempt in 1 2 3; do
+            code=$(curl -s -o body.json -w '%{http_code}' --max-time 10 https://evan-mavis.dev/api/health || echo 000)
+            [ "$code" = "200" ] && exit 0
+            sleep $(( attempt * 10 ))
+          done
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit 1
+      - name: Open or update incident issue
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "Production health check failing";
+            const body = `\`/api/health\` returned HTTP ${{ steps.check.outputs.code }} at ${new Date().toISOString()}.\nRun: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\nSee docs/runbook.md.`;
+            const { data: open } = await github.rest.issues.listForRepo({ ...context.repo, state: "open", labels: "incident" });
+            const existing = open.find((i) => i.title === title);
+            if (existing) {
+              await github.rest.issues.createComment({ ...context.repo, issue_number: existing.number, body });
+            } else {
+              await github.rest.issues.create({ ...context.repo, title, body, labels: ["incident", "priority: P0", "type: bug", "area: infra"] });
+            }

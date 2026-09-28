@@ -601,8 +601,8 @@ export default function PortfolioTree({ isExpanded }: PortfolioTreeProps) {
           isExpanded
             ? allFolderValues
             : hasUserInteracted
-            ? []
-            : initialExpandedFolders
+              ? []
+              : initialExpandedFolders
         }
         key={
           isExpanded ? "expanded" : hasUserInteracted ? "collapsed" : "initial"
