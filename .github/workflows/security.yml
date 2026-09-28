@@ -36,10 +36,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-      - name: npm audit report
+      - name: pnpm audit report
         run: |
-          echo "### npm audit" >> "$GITHUB_STEP_SUMMARY"
-          npm audit --omit=dev --audit-level=high | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "### pnpm audit" >> "$GITHUB_STEP_SUMMARY"
+          pnpm audit --prod --audit-level=high | tee -a "$GITHUB_STEP_SUMMARY"

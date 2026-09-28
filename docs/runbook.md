@@ -11,14 +11,14 @@
 ## Site is down or broken after a deploy
 
 1. Confirm the problem: open the site, then check `/api/health`.
-2. **Roll back**: in Vercel → Deployments, choose the last good production deploy → **Instant Rollback**. Or from the CLI: `npx vercel rollback <deployment-url>`.
+2. **Roll back**: in Vercel → Deployments, choose the last good production deploy → **Instant Rollback**. Or from the CLI: `pnpm exec vercel rollback <deployment-url>`.
 3. Revert the bad commit on `main` (`git revert <sha>`) so the next deploy doesn't bring the problem back.
 4. Close the `incident` issue with a short note on the cause.
 
 ## Build fails on Vercel
 
-- Run `npm run build` locally. Common causes: a type error, a lint error, or a Google Fonts outage (retry the build).
-- Dependency problems: `rm -rf node_modules && npm ci`.
+- Run `pnpm run build` locally. Common causes: a type error, a lint error, or a Google Fonts outage (retry the build).
+- Dependency problems: `rm -rf node_modules && pnpm install --frozen-lockfile`.
 
 ## Images or resume missing
 

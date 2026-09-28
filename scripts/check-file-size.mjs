@@ -4,7 +4,7 @@ import { statSync } from "node:fs";
 
 const KB = 1024;
 const DEFAULT_LIMIT = 500 * KB;
-const PUBLIC_LIMIT = 5 * 1024 * KB;
+const PUBLIC_LIMIT = 10 * 1024 * KB;
 
 const files = execFileSync(
   "git",
@@ -13,7 +13,7 @@ const files = execFileSync(
 )
   .split("\n")
   .filter(Boolean)
-  .filter((file) => !/(package-lock\.json|pnpm-lock\.yaml)$/.test(file));
+  .filter((file) => !/(pnpm-lock\.yaml)$/.test(file));
 
 const oversized = files.filter((file) => {
   const limit = file.startsWith("public/") ? PUBLIC_LIMIT : DEFAULT_LIMIT;

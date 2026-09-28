@@ -14,9 +14,7 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command: process.env.CI
-      ? `npm run start -- -p ${port}`
-      : `npm run dev -- -p ${port}`,
+    command: process.env.CI ? `next start -p ${port}` : `next dev -p ${port}`,
     url: `http://localhost:${port}/api/health`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

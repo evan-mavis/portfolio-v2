@@ -2,6 +2,7 @@
   "name": "portfolio-v2",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@12.6.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,7 +19,7 @@
     "cpd": "jscpd",
     "analyze": "ANALYZE=true next build --webpack",
     "docs:check": "node scripts/check-agents-md.mjs",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run knip && npm run cpd && npm run docs:check && npm run test:coverage",
+    "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run knip && pnpm run cpd && pnpm run docs:check && pnpm run test:coverage",
     "prepare": "husky"
   },
   "lint-staged": {

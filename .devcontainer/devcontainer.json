@@ -5,7 +5,7 @@
   "portsAttributes": {
     "3000": { "label": "Next.js dev", "onAutoForward": "openBrowser" }
   },
-  "postCreateCommand": "npm ci && npx playwright install --with-deps chromium",
+  "postCreateCommand": "corepack enable && pnpm install --frozen-lockfile && pnpm exec playwright install --with-deps chromium",
   "customizations": {
     "vscode": {
       "extensions": [

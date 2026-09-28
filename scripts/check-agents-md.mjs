@@ -1,4 +1,4 @@
-// Fails when AGENTS.md or README.md reference an npm script or a repo path that no longer exists.
+// Fails when AGENTS.md or README.md reference a pnpm script or a repo path that no longer exists.
 import { existsSync, readFileSync } from "node:fs";
 
 const scripts = JSON.parse(readFileSync("package.json", "utf8")).scripts;
@@ -8,12 +8,13 @@ const errors = [];
 for (const doc of ["AGENTS.md", "README.md"]) {
   const text = readFileSync(doc, "utf8");
 
-  for (const [, name] of text.matchAll(/npm run ([\w:-]+)/g)) {
-    if (!scripts[name]) errors.push(`${doc}: unknown script "npm run ${name}"`);
+  for (const [, name] of text.matchAll(/pnpm run ([\w:-]+)/g)) {
+    if (!scripts[name])
+      errors.push(`${doc}: unknown script "pnpm run ${name}"`);
   }
-  for (const [, name] of text.matchAll(/`npm (\w+)`/g)) {
+  for (const [, name] of text.matchAll(/`pnpm (\w+)`/g)) {
     if (!builtins.has(name) && !scripts[name]) {
-      errors.push(`${doc}: unknown command "npm ${name}"`);
+      errors.push(`${doc}: unknown command "pnpm ${name}"`);
     }
   }
   for (const [, path] of text.matchAll(

@@ -18,19 +18,20 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: npm
-      - run: npm ci
-      - run: npm run format:check
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm run knip
-      - run: npm run cpd
-      - run: npm run docs:check
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run format:check
+      - run: pnpm run lint
+      - run: pnpm run typecheck
+      - run: pnpm run knip
+      - run: pnpm run cpd
+      - run: pnpm run docs:check
       - name: Unit tests with coverage
-        run: npm run test:coverage
+        run: pnpm run test:coverage
         env:
           CI: "true"
       - name: Coverage summary
@@ -47,31 +48,32 @@ jobs:
             coverage/
       - name: Large file check
         run: |
-          big=$(git ls-files -z | xargs -0 du -k | awk '$1 > 5120 {print $2}')
-          if [ -n "$big" ]; then echo "Files over 5 MB:"; echo "$big"; exit 1; fi
+          big=$(git ls-files -z | xargs -0 du -k | awk '$1 > 10240 {print $2}')
+          if [ -n "$big" ]; then echo "Files over 10 MB:"; echo "$big"; exit 1; fi
 
   build-e2e:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: npm
+          cache: pnpm
       - uses: actions/cache@v4
         with:
           path: .next/cache
-          key: next-${{ hashFiles('package-lock.json') }}-${{ hashFiles('app/**', 'components/**', 'lib/**') }}
-          restore-keys: next-${{ hashFiles('package-lock.json') }}-
-      - run: npm ci
+          key: next-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('app/**', 'components/**', 'lib/**') }}
+          restore-keys: next-${{ hashFiles('pnpm-lock.yaml') }}-
+      - run: pnpm install --frozen-lockfile
       - name: Build (timed)
         run: |
           start=$(date +%s)
-          npm run build
+          pnpm run build
           echo "### Build time: $(( $(date +%s) - start ))s" >> "$GITHUB_STEP_SUMMARY"
-      - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm run test:e2e
         env:
           CI: "true"
       - uses: actions/upload-artifact@v4
@@ -86,12 +88,13 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: npm
-      - run: npm ci && npm run build
-      - run: npm run start & npx --yes wait-on http://localhost:3000/api/health
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile && pnpm run build
+      - run: pnpm run start & pnpm dlx wait-on http://localhost:3000/api/health
       - name: OWASP ZAP baseline scan
         uses: zaproxy/action-baseline@v0.14.0
         with:

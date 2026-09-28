@@ -11,8 +11,8 @@
 
 ## Testing done
 
-- [ ] `npm run check` passes (format, lint, types, knip, cpd, unit tests with coverage)
-- [ ] `npm run test:e2e` passes
+- [ ] `pnpm run check` passes (format, lint, types, knip, cpd, unit tests with coverage)
+- [ ] `pnpm run test:e2e` passes
 - [ ] Manually checked in the browser (light and dark mode, mobile width) for UI changes
 
 ## Screenshots
