@@ -230,10 +230,7 @@ const travelImages: TravelImage[] = [
   },
 ];
 
-// Desktop zig-zag (center/end/center/start) is pure CSS via md: variants, so
-// there is no post-hydration layout switch. Mobile stays centered. Alignment
-// uses items-* on the full-width row so the figure below gets a definite
-// containing width on the first layout pass (no circular percentage sizing).
+// css keeps the travel layout stable before hydration.
 function alignmentClass(index: number): string {
   if (index % 4 === 1) return "md:items-end";
   if (index % 4 === 3) return "md:items-start";

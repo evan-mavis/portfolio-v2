@@ -7,8 +7,7 @@ type TreeState = ReturnType<typeof useTreeState>;
 
 const TreeStateContext = createContext<TreeState | null>(null);
 
-// Shares the tree expansion state between the PortfolioTree and ButtonsRow
-// islands so app/page.tsx can stay a server component.
+// keep tree state across page visits.
 export function TreeStateProvider({ children }: { children: ReactNode }) {
   const treeState = useTreeState();
   return (

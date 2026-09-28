@@ -1,4 +1,4 @@
-// Blocks staged files that would bloat the repo. Images in public/ get a larger budget.
+// block oversized staged files. photos get more room.
 import { execFileSync } from "node:child_process";
 import { statSync } from "node:fs";
 

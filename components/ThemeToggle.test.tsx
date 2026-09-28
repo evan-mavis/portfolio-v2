@@ -37,11 +37,7 @@ describe("ThemeToggle", () => {
     expect(setTheme).toHaveBeenCalledWith(next);
   });
 
-  // Regression guard for the React #418 hydration mismatch on /: next-themes
-  // resolves the system theme synchronously on the client's first render, so
-  // branching on resolvedTheme makes server and client first renders differ.
-  // The first render (renderToString never runs mount effects) must be the
-  // identical disabled placeholder no matter what useTheme reports.
+  // a theme picked before hydration must not change the server markup.
   it("renders the identical placeholder on first render for any theme state", () => {
     mockTheme(undefined);
     const unresolvedHtml = renderToString(<ThemeToggle />);

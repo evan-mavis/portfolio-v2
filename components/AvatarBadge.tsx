@@ -36,7 +36,6 @@ export default function AvatarBadge() {
       >
         <span className="avatar-flip-inner relative block size-full">
           <span className={FACE_CLASS}>
-            {/* pre-sized static webp; plain img keeps the flip faces light */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={FRONT_AVATAR_SRC}

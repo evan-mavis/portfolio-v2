@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { TreeStateProvider } from "@/components/TreeStateProvider";
 
 const jersey10 = Jersey_10({
   weight: "400",
@@ -53,6 +54,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: [{ url: "/avatar-mandalorian.webp", type: "image/webp" }],
+  },
 };
 
 export default function RootLayout({
@@ -69,7 +73,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <TreeStateProvider>{children}</TreeStateProvider>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

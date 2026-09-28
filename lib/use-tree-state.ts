@@ -6,10 +6,7 @@ import {
 import { readTreeState, writeTreeState } from "./tree-state";
 import { useMountEffect } from "./use-mount-effect";
 
-// Owns the portfolio tree's expansion state and persists it to localStorage.
-// Initial state is always the default expansion so server and client renders
-// match; the stored state is read once after mount to avoid hydration
-// mismatch. Every change writes straight through to storage.
+// start with server-safe defaults, then load the saved tree after hydration.
 export function useTreeState() {
   const [expandedItems, setExpandedItems] = useState<string[]>(
     DEFAULT_EXPANDED_ITEMS,

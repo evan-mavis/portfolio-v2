@@ -247,8 +247,8 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
                 children: [
                   techFile("cursor", "cursor"),
                   techFile("codex", "codex"),
-                  techFile("github", "github"),
                   techFile("factory", "factory"),
+                  techFile("github", "github"),
                   {
                     kind: "file",
                     value: "my-agentic-workflow-skills",

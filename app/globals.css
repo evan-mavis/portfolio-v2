@@ -208,7 +208,7 @@
   }
   html {
     font-family: var(--font-jersey-10), "Jersey 10", sans-serif;
-    letter-spacing: 0.1em; /* Increased letter spacing for better readability */
+    letter-spacing: 0.1em;
   }
   body {
     @apply bg-background text-foreground;
@@ -233,7 +233,7 @@
   }
 }
 
-/* avatar 3d flip: front = photo, back = mandalorian; flips on hover/focus */
+/* flip the avatar on hover or focus. */
 .avatar-flip {
   perspective: 600px;
 }

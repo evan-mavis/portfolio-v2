@@ -24,6 +24,13 @@ describe("getTechIcon", () => {
     expect(svg.getAttribute("class")).not.toContain("lucide");
   });
 
+  it("uses factory's official logo at a readable size", () => {
+    const { container } = render(<>{getTechIcon("factory")}</>);
+    const image = container.querySelector("img");
+    expect(image).toHaveAttribute("src", "/factory-logo.svg");
+    expect(image).toHaveClass("h-[1.4em]");
+  });
+
   it("falls back to the lucide file icon for unknown names", () => {
     const svg = renderIcon("cobol");
     expect(svg.getAttribute("class")).toContain("lucide");
@@ -71,7 +78,6 @@ describe("getTechIcon", () => {
     "aws",
     "sanity",
     "sentry",
-    "factory",
   ])("resolves a bundled brand icon for %s", (name) => {
     const svg = renderIcon(name);
     expect(svg.getAttribute("class")).not.toContain("lucide");

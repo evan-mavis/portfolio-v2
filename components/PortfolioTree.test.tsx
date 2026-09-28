@@ -28,9 +28,7 @@ describe("PortfolioTree", () => {
     vi.useFakeTimers();
     try {
       const { container } = renderTree(DEFAULT_EXPANDED_ITEMS);
-      // tree content is present before any timer fires
       expect(screen.getByText("career/")).toBeInTheDocument();
-      // no intro animation styles (opacity/transform) on the first paint
       const wrapper = container.firstElementChild;
       const style = wrapper?.getAttribute("style") ?? "";
       expect(style).not.toMatch(/opacity:\s*0/);
@@ -66,7 +64,6 @@ describe("PortfolioTree", () => {
 
   it("nests the tech subfolders under tech i use/", () => {
     renderTree(DEFAULT_EXPANDED_ITEMS);
-    // collapsed by default: neither the folder nor its leaves are visible
     expect(screen.queryByText("tech i use/")).not.toBeNull();
     expect(screen.queryByText("backend/")).toBeNull();
     expect(screen.queryByText("inngest")).toBeNull();
@@ -108,11 +105,8 @@ describe("PortfolioTree", () => {
 
   it("shows only the default-expanded folders with the default expansion", () => {
     renderTree(DEFAULT_EXPANDED_ITEMS);
-    // trigger of a folder inside the default-expanded job-title folder
     expect(screen.getByText("career/")).toBeInTheDocument();
-    // nested inside the collapsed career folder
     expect(screen.queryByText(/airgoods • software engineer/)).toBeNull();
-    // nested inside the collapsed tech stack folder
     expect(screen.queryByText("typescript")).toBeNull();
   });
 

@@ -1,9 +1,4 @@
-// Re-encodes oversized photos in public/ in place: any .jpg/.jpeg/.png over
-// ~400 KB is resized to a 2400px maximum long edge and re-encoded (mozjpeg
-// quality 80 for jpeg, max compression for png). sharp strips EXIF/GPS
-// metadata by default and .rotate() bakes in any EXIF orientation first.
-// Filenames and extensions are preserved. Re-running only touches files that
-// are still over the threshold.
+// shrink large public photos in place. sharp strips exif and fixes orientation.
 import { readdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";

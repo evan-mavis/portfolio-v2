@@ -4,10 +4,22 @@ import { GENERATED_ICONS } from "./icons-generated";
 
 const iconClass = "w-[1em] h-[1em]";
 
-// Renders a bundled inline SVG for known tech names (see scripts/generate-icons.mjs),
-// falling back to the lucide file icon for anything unmapped.
+// use local brand art; unknown names get a file icon.
 export function getTechIcon(techName: string): React.ReactNode {
-  const icon = GENERATED_ICONS[techName.toLowerCase().trim()];
+  const name = techName.toLowerCase().trim();
+  if (name === "factory") {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src="/factory-logo.svg"
+        alt=""
+        aria-hidden="true"
+        className="h-[1.4em] w-[1.4em] rounded-[0.15em]"
+      />
+    );
+  }
+
+  const icon = GENERATED_ICONS[name];
 
   if (!icon) {
     return <FileIcon className={iconClass} />;

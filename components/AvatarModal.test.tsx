@@ -20,12 +20,21 @@ describe("AvatarModal", () => {
 
   it("closes when the backdrop is clicked", () => {
     const onClose = vi.fn();
-    const { container } = render(
-      <AvatarModal isOpen onClose={onClose} avatarSrc="/a.jpeg" />,
-    );
-    const backdrop = container.querySelector(".backdrop-blur-md");
+    render(<AvatarModal isOpen onClose={onClose} avatarSrc="/a.jpeg" />);
+    const backdrop = document.querySelector(".backdrop-blur-md");
     expect(backdrop).not.toBeNull();
     fireEvent.click(backdrop!);
     expect(onClose).toHaveBeenCalledOnce();
+  });
+
+  it("does not pass the close click to the tree behind the modal", () => {
+    const parentClick = vi.fn();
+    render(
+      <div onClick={parentClick}>
+        <AvatarModal isOpen onClose={() => {}} avatarSrc="/a.jpeg" />
+      </div>,
+    );
+    fireEvent.click(document.querySelector(".backdrop-blur-md")!);
+    expect(parentClick).not.toHaveBeenCalled();
   });
 });

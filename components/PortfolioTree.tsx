@@ -112,11 +112,10 @@ export default function PortfolioTree() {
     useTreeStateContext();
   const containerRef = useRef<HTMLDivElement>(null);
   const [minWidth, setMinWidth] = useState<number | undefined>(undefined);
+  const [animate, setAnimate] = useState(false);
 
   useMountEffect(() => {
-    // use ResizeObserver to track width and maintain the maximum width
-    // this ensures the container maintains its width when first two folders are expanded
-    // even when they're manually collapsed
+    // keep the widest tree width when folders close.
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const width = entry.contentRect.width;
@@ -143,7 +142,11 @@ export default function PortfolioTree() {
       <Tree
         className="w-auto h-auto text-foreground dark:text-[#ffd48a] text-base lg:text-lg"
         expandedItems={expandedItems}
-        onExpandedChange={onExpandedChange}
+        animate={animate}
+        onExpandedChange={(next) => {
+          setAnimate(true);
+          onExpandedChange(next);
+        }}
       >
         {PORTFOLIO_TREE_DATA.map(renderNode)}
       </Tree>

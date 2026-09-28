@@ -33,6 +33,7 @@ type TreeContextProps = {
   openIcon?: React.ReactNode;
   closeIcon?: React.ReactNode;
   direction: "rtl" | "ltr";
+  animate: boolean;
 };
 
 const TreeContext = createContext<TreeContextProps | null>(null);
@@ -56,6 +57,7 @@ type TreeViewProps = {
   onExpandedChange?: (expandedItems: string[]) => void;
   openIcon?: React.ReactNode;
   closeIcon?: React.ReactNode;
+  animate?: boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
@@ -71,6 +73,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       indicator = true,
       openIcon,
       closeIcon,
+      animate = true,
       dir,
       ...props
     },
@@ -179,6 +182,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           openIcon,
           closeIcon,
           direction,
+          animate,
         }}
       >
         <div className={cn("size-full", className)}>
@@ -195,7 +199,6 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
               className="flex flex-col gap-1"
               onValueChange={(value) => {
                 if (isControlled) {
-                  // radix passes the full next value for type="multiple"
                   onExpandedChange?.(value);
                   return;
                 }
@@ -262,6 +265,7 @@ const Folder = ({
     isControlled,
     openIcon,
     closeIcon,
+    animate,
   } = useTree();
 
   return (
@@ -289,7 +293,13 @@ const Folder = ({
         <span className="text-left flex-1">{element}</span>
         {inlineContent}
       </AccordionPrimitive.Trigger>
-      <AccordionPrimitive.Content className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down relative h-full overflow-hidden text-base">
+      <AccordionPrimitive.Content
+        className={cn(
+          "relative h-full overflow-hidden text-base",
+          animate &&
+            "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+        )}
+      >
         {element && indicator && <TreeIndicator aria-hidden="true" />}
         <AccordionPrimitive.Root
           dir={direction}
@@ -299,7 +309,6 @@ const Folder = ({
           value={expandedItems}
           onValueChange={(value) => {
             if (isControlled) {
-              // radix passes the full next value for type="multiple"
               setExpandedItems?.(value);
               return;
             }

@@ -1,25 +1,22 @@
-## my simple portfolio... but refined and converted to a next.js app :)
+# evan's portfolio
 
-Live at [evan-mavis.dev](https://evan-mavis.dev).
+a folder tree with my work, photos, and a few things i like. built with next.js and hosted at [evan-mavis.dev](https://evan-mavis.dev).
 
-### Quick start
+## run it
 
-Requires Node.js 24.
+use node.js 24 and pnpm.
 
 ```bash
-pnpm install && pnpm run dev
+pnpm install
+pnpm run dev
 ```
 
-Open http://localhost:3000. No environment variables or external services are required.
+open [localhost:3000](http://localhost:3000). no env vars or services needed.
 
-### Scripts
+## check it
 
-- `pnpm run build`: production build (`pnpm run start` serves it)
-- `pnpm run lint`, `pnpm run typecheck`, `pnpm run format:check`: static checks
-- `pnpm test`, `pnpm run test:coverage`: unit tests (Vitest)
-- `pnpm run test:e2e`: browser tests (Playwright; run `pnpm exec playwright install chromium` first)
-- `pnpm run icons:generate`: regenerate `lib/icons-generated.ts` from the `@iconify-json/*` devDependencies (run after editing `ICON_SOURCES` in `scripts/generate-icons.mjs`)
-- `pnpm run images:optimize`: re-encode oversized `public/` photos in place (max 2400px, mozjpeg q80, EXIF stripped)
-- `pnpm run check`: everything CI runs
+- `pnpm run check` runs formatting, lint, types, and unit tests.
+- `pnpm run test:e2e` runs browser tests. first run `pnpm exec playwright install chromium`.
+- `pnpm run build` checks the production build.
 
-See [AGENTS.md](./AGENTS.md) for conventions and a manual QA walkthrough, [docs/architecture.md](./docs/architecture.md) for how the site fits together, and [docs/runbook.md](./docs/runbook.md) for incident and rollback steps.
+[AGENTS.md](./AGENTS.md) has the repo rules. [the runbook](./docs/runbook.md) has deploy and rollback steps.

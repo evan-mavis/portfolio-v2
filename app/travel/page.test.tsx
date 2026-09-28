@@ -28,7 +28,6 @@ describe("travel page", () => {
 
   it("prioritizes only the first two images", () => {
     const { images } = renderGallery();
-    // priority images load eagerly: next/image omits loading="lazy"
     expect(images[0].getAttribute("loading")).toBeNull();
     expect(images[1].getAttribute("loading")).toBeNull();
     for (const image of images.slice(2)) {
@@ -41,10 +40,8 @@ describe("travel page", () => {
     const items = Array.from(container.querySelectorAll("figure")).map(
       (figure) => figure.parentElement!,
     );
-    // mobile default: centered via items-center
     expect(items[0].className).toContain("items-center");
     expect(items[0].className).not.toContain("md:items-");
-    // desktop zig-zag via md: variants, applied identically on first render
     expect(items[1].className).toContain("md:items-end");
     expect(items[3].className).toContain("md:items-start");
   });

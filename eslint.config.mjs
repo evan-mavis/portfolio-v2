@@ -9,7 +9,7 @@ const eslintConfig = defineConfig([
     rules: {
       complexity: ["error", { max: 15 }],
       "max-depth": ["error", 4],
-      // PortfolioTree.tsx is a large declarative JSX tree; split before exceeding this.
+      // split PortfolioTree.tsx before it gets larger.
       "max-lines": [
         "error",
         { max: 700, skipBlankLines: true, skipComments: true },
@@ -26,7 +26,7 @@ const eslintConfig = defineConfig([
           leadingUnderscore: "allow",
         },
         { selector: "typeLike", format: ["PascalCase"] },
-        // Object keys mirror external data (CSS props, icon slugs, HTTP headers).
+        // these keys match external data.
         { selector: ["objectLiteralProperty", "typeProperty"], format: null },
         { selector: "import", format: null },
       ],

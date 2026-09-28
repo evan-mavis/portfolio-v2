@@ -1,4 +1,4 @@
-// Fails when AGENTS.md or README.md reference a pnpm script or a repo path that no longer exists.
+// catch stale commands and paths in AGENTS.md and README.md.
 import { existsSync, readFileSync } from "node:fs";
 
 const scripts = JSON.parse(readFileSync("package.json", "utf8")).scripts;

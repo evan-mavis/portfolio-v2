@@ -26,7 +26,6 @@ describe("food page", () => {
   it("prioritizes only the first (s tier) row", () => {
     const { images } = renderGallery();
     const [sTier, rest] = [images.slice(0, 11), images.slice(11)];
-    // priority images load eagerly: next/image omits loading="lazy"
     for (const image of sTier) {
       expect(image.getAttribute("loading")).toBeNull();
     }

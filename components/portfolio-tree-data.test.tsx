@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { GENERATED_ICONS } from "@/lib/icons-generated";
+import { getTechIcon } from "@/lib/tech-icons";
 import {
   ALL_FOLDER_VALUES,
   DEFAULT_EXPANDED_ITEMS,
@@ -146,7 +146,7 @@ describe("portfolio tree data", () => {
     ["observability", ["posthog", "sentry"]],
     [
       "tooling",
-      ["cursor", "codex", "github", "factory", "my-agentic-workflow-skills"],
+      ["cursor", "codex", "factory", "github", "my-agentic-workflow-skills"],
     ],
     ["productivity", ["linear", "notion", "slack", "excalidraw"]],
   ])("tech i use/%s contains exactly the expected items", (folder, items) => {
@@ -168,10 +168,9 @@ describe("portfolio tree data", () => {
     expect(files.length).toBeGreaterThan(0);
     for (const file of files) {
       expect(file.techIcon, `techIcon for ${file.value}`).toBeDefined();
-      expect(
-        GENERATED_ICONS[file.techIcon as string],
-        `bundled icon for ${file.value}`,
-      ).toBeDefined();
+      expect(renderToStaticMarkup(getTechIcon(file.techIcon!))).not.toContain(
+        "lucide-file",
+      );
     }
   });
 

@@ -17,8 +17,7 @@ function isTreeState(value: unknown): value is TreeState {
   );
 }
 
-// Reads the persisted tree state. Returns null on the server, when nothing is
-// stored, or when the stored value is corrupt.
+// bad or missing saved state falls back to the default.
 export function readTreeState(): TreeState | null {
   if (typeof window === "undefined") {
     return null;
@@ -42,6 +41,6 @@ export function writeTreeState(state: TreeState): void {
   try {
     window.localStorage.setItem(TREE_STORAGE_KEY, JSON.stringify(state));
   } catch {
-    // storage unavailable or full; persistence is best-effort
+    // the tree still works when storage is unavailable.
   }
 }

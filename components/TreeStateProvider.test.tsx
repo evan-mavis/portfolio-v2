@@ -24,7 +24,6 @@ describe("TreeStateProvider", () => {
 
   it("shares expand-all state between the toggle and the tree", () => {
     renderIslands();
-    // nested inside the collapsed-by-default career folder
     expect(screen.queryByText(/airgoods • software engineer/)).toBeNull();
 
     fireEvent.click(screen.getByRole("button", { name: "expand all folders" }));

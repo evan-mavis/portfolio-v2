@@ -49,13 +49,13 @@ describe("AvatarBadge", () => {
   });
 
   it("opens the modal with the keyboard and closes it on backdrop click", () => {
-    const { container } = renderBadge();
+    renderBadge();
     const trigger = getTrigger();
 
     fireEvent.keyDown(trigger, { key: "Enter" });
     expect(screen.getByRole("img", { name: "evan mavis" })).toBeInTheDocument();
 
-    const backdrop = container.querySelector(".backdrop-blur-md");
+    const backdrop = document.querySelector(".backdrop-blur-md");
     expect(backdrop).not.toBeNull();
     fireEvent.click(backdrop!);
     expect(screen.queryByRole("img", { name: "evan mavis" })).toBeNull();
