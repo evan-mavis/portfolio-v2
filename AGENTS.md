@@ -52,12 +52,13 @@ The pre-commit hook (Husky) runs a file-size check, Prettier + ESLint on staged 
 
 1. `pnpm install && pnpm run dev`.
 2. `curl -s localhost:3000/api/health` should return `{"status":"ok",...}`.
-3. Open http://localhost:3000. The file tree animates in, with `evan mavis/` and the job title expanded.
+3. Open http://localhost:3000. The file tree renders instantly (no load-in animation), with `evan mavis/` and the job-title folder expanded.
 4. Click the expand toggle (top right). All folders open. Click the theme toggle and confirm light and dark modes switch.
-5. Click `interesting stuff/ → travel`. The travel gallery loads. Click **Back** to return.
-6. There is no login. All pages are public.
+5. Expand or collapse a few folders, then reload: the exact same expansion state is restored (persisted in localStorage under `portfolio-tree-state`).
+6. Click `interesting stuff/ → travel`. The travel gallery loads. Click **back** to return; the tree state is unchanged.
+7. There is no login. All pages are public.
 
-`pnpm run test:e2e` automates steps 2 to 5.
+`pnpm run test:e2e` automates steps 2, 4, and 6 (health check, tree expansion, travel navigation).
 
 ## Pull requests
 

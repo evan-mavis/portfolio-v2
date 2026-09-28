@@ -43,6 +43,14 @@ place (max 2400px long edge, mozjpeg quality 80, EXIF/GPS stripped, same filenam
 Commit the recompressed file. If you add a travel photo, update the `width`/`height` in
 `app/travel/page.tsx` to the optimized file's real dimensions so layout space is reserved.
 
+## Visitor reports a "stuck" home-page tree
+
+Folder expand/collapse state persists in the visitor's browser under the
+localStorage key `portfolio-tree-state` (see `docs/architecture.md`). Having
+the visitor clear site data (or just that key) resets the tree to the default
+expansion (`evan mavis/` + the job-title folder). This is expected behavior,
+not a bug.
+
 ## Security issue reported
 
 - Check Dependabot and CodeQL alerts under GitHub → Security. Update the dependency, merge, and confirm the deploy.
