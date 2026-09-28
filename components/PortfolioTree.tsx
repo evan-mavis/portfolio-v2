@@ -10,13 +10,9 @@ import {
   type TreeFileNode,
   type TreeNode,
 } from "./portfolio-tree-data";
+import { useTreeStateContext } from "./TreeStateProvider";
 import { CircleSmall } from "lucide-react";
 import { track } from "@vercel/analytics";
-
-interface PortfolioTreeProps {
-  expandedItems: string[];
-  onExpandedChange: (expandedItems: string[]) => void;
-}
 
 const LINK_CLASS = "text-primary hover:underline";
 
@@ -111,10 +107,9 @@ function renderNode(node: TreeNode): React.ReactNode {
   );
 }
 
-export default function PortfolioTree({
-  expandedItems,
-  onExpandedChange,
-}: PortfolioTreeProps) {
+export default function PortfolioTree() {
+  const { expandedItems, handleExpandedItemsChange: onExpandedChange } =
+    useTreeStateContext();
   const containerRef = useRef<HTMLDivElement>(null);
   const [minWidth, setMinWidth] = useState<number | undefined>(undefined);
 

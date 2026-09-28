@@ -2,21 +2,25 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { track } from "@vercel/analytics";
 import { describe, expect, it, vi } from "vitest";
 import PortfolioTree from "./PortfolioTree";
+import { useTreeStateContext } from "./TreeStateProvider";
 import {
   ALL_FOLDER_VALUES,
   DEFAULT_EXPANDED_ITEMS,
 } from "./portfolio-tree-data";
 
+vi.mock("./TreeStateProvider", () => ({ useTreeStateContext: vi.fn() }));
+
 function renderTree(
   expandedItems: string[] = ALL_FOLDER_VALUES,
   onExpandedChange: (expandedItems: string[]) => void = () => {},
 ) {
-  return render(
-    <PortfolioTree
-      expandedItems={expandedItems}
-      onExpandedChange={onExpandedChange}
-    />,
-  );
+  vi.mocked(useTreeStateContext).mockReturnValue({
+    expandedItems,
+    allExpanded: false,
+    handleExpandedItemsChange: onExpandedChange,
+    handleAllExpandedChange: () => {},
+  });
+  return render(<PortfolioTree />);
 }
 
 describe("PortfolioTree", () => {
@@ -26,7 +30,7 @@ describe("PortfolioTree", () => {
       const { container } = renderTree(DEFAULT_EXPANDED_ITEMS);
       // tree content is present before any timer fires
       expect(screen.getByText("career/")).toBeInTheDocument();
-      // no framer-motion intro styles (opacity/transform) on the first paint
+      // no intro animation styles (opacity/transform) on the first paint
       const wrapper = container.firstElementChild;
       const style = wrapper?.getAttribute("style") ?? "";
       expect(style).not.toMatch(/opacity:\s*0/);
