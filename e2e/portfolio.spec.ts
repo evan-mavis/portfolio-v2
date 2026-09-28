@@ -57,6 +57,15 @@ test("opening the tree keeps its left edge still", async ({ page }) => {
   expect(Math.abs(after!.x - before!.x)).toBeLessThan(1);
 });
 
+test("reserves space for the vertical scrollbar", async ({ page }) => {
+  await page.goto("/");
+  expect(
+    await page.evaluate(
+      () => getComputedStyle(document.documentElement).scrollbarGutter,
+    ),
+  ).toBe("stable");
+});
+
 test("reload starts with the intro folders open", async ({ page }) => {
   await page.goto("/");
   await page.locator("button[aria-expanded]").first().click();

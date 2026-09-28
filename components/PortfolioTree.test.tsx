@@ -131,6 +131,7 @@ describe("PortfolioTree", () => {
     ["resume", "resume_click"],
     ["linkedin", "linkedin_click"],
     ["github", "github_click"],
+    ["x profile", "x_profile_click"],
     ["email", "email_click"],
     ["travel", "travel_page_click"],
     ["food trip to southeast asia + japan", "food_page_click"],

@@ -65,6 +65,7 @@ const ICON_SOURCES = {
   typescript: "simple-icons:typescript",
   vercel: "simple-icons:vercel",
   vite: "simple-icons:vite",
+  x: "simple-icons:x",
 };
 
 // icons without an iconify entry live here.

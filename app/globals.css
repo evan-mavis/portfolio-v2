@@ -209,6 +209,7 @@
   html {
     font-family: var(--font-jersey-10), "Jersey 10", sans-serif;
     letter-spacing: 0.1em;
+    scrollbar-gutter: stable;
   }
   body {
     @apply bg-background text-foreground;

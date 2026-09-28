@@ -79,6 +79,7 @@ describe("getTechIcon", () => {
     "aws",
     "sanity",
     "sentry",
+    "x",
   ])("resolves a bundled brand icon for %s", (name) => {
     const svg = renderIcon(name);
     expect(svg.getAttribute("class")).not.toContain("lucide");
