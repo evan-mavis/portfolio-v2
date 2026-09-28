@@ -232,3 +232,27 @@
     opacity: 1;
   }
 }
+
+/* avatar 3d flip: front = photo, back = mandalorian; flips on hover/focus */
+.avatar-flip {
+  perspective: 600px;
+}
+.avatar-flip-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-out;
+}
+.avatar-flip:hover .avatar-flip-inner,
+.avatar-flip:focus-visible .avatar-flip-inner {
+  transform: rotateY(180deg);
+}
+.avatar-flip-face {
+  backface-visibility: hidden;
+}
+.avatar-flip-back {
+  transform: rotateY(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .avatar-flip-inner {
+    transition: none;
+  }
+}

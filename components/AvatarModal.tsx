@@ -1,8 +1,5 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { Avatar, AvatarImage } from "./ui/avatar";
-
 interface AvatarModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -14,42 +11,32 @@ export default function AvatarModal({
   onClose,
   avatarSrc,
 }: AvatarModalProps) {
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-md z-[9998]"
-            onClick={onClose}
-          />
+  if (!isOpen) {
+    return null;
+  }
 
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none">
-            <motion.div
-              initial={{ scale: 0.1, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.1, opacity: 0 }}
-              transition={{
-                duration: 0.4,
-                ease: "easeOut",
-              }}
-              className="pointer-events-auto"
-              onClick={onClose}
-            >
-              <Avatar className="w-[90vw] h-[90vw] max-w-[600px] max-h-[600px] sm:size-[80vh] bg-primary border border-primary rounded-full overflow-hidden">
-                <AvatarImage
-                  src={avatarSrc}
-                  loading="eager"
-                  className="object-cover! object-center!"
-                />
-              </Avatar>
-            </motion.div>
-          </div>
-        </>
-      )}
-    </AnimatePresence>
+  return (
+    <>
+      <div
+        className="animate-in fade-in fixed inset-0 z-[9998] bg-black/50 backdrop-blur-md duration-300"
+        onClick={onClose}
+      />
+
+      <div className="pointer-events-none fixed inset-0 z-[9999] flex items-center justify-center">
+        <div
+          className="animate-in fade-in zoom-in pointer-events-auto duration-300 ease-out"
+          onClick={onClose}
+        >
+          {/* pre-sized static webp; plain img keeps the modal dependency-free */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={avatarSrc}
+            alt="evan mavis"
+            loading="eager"
+            className="h-[90vw] max-h-[600px] w-[90vw] max-w-[600px] rounded-full border border-primary bg-primary object-cover object-center sm:size-[80vh]"
+          />
+        </div>
+      </div>
+    </>
   );
 }
