@@ -30,7 +30,7 @@ export default function AvatarModal({
       />
 
       <div className="pointer-events-none fixed inset-0 z-[9999] flex items-center justify-center">
-        <div
+        <figure
           className="animate-in fade-in zoom-in pointer-events-auto duration-300 ease-out"
           onClick={close}
         >
@@ -41,7 +41,10 @@ export default function AvatarModal({
             loading="eager"
             className="h-[90vw] max-h-[600px] w-[90vw] max-w-[600px] rounded-2xl border border-primary bg-primary object-contain sm:size-[80vh]"
           />
-        </div>
+          <figcaption className="mt-2 text-center text-sm text-white/80">
+            katz deli - nyc
+          </figcaption>
+        </figure>
       </div>
     </>,
     document.body,

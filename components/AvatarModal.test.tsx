@@ -16,6 +16,7 @@ describe("AvatarModal", () => {
     );
     const image = screen.getByRole("img", { name: "evan mavis" });
     expect(image.getAttribute("src")).toBe("/avatar-new.webp");
+    expect(screen.getByText("katz deli - nyc")).toBeVisible();
   });
 
   it("closes when the backdrop is clicked", () => {
