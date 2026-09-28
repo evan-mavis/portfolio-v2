@@ -2,19 +2,6 @@
 
 Live at [evan-mavis.dev](https://evan-mavis.dev).
 
-The home page is a file tree of my life: it renders instantly (no load-in animation), and
-expand/collapse state persists in `localStorage` (`portfolio-tree-state`), so the tree looks
-exactly how you left it when you come back — even after visiting `/travel` or `/food`. The
-`tech i use/` folder is a hierarchy of what I work with (frontend, backend, infra,
-observability, tooling, productivity), including
-[my agentic workflow skills](https://github.com/evan-mavis/skills).
-
-Performance matters here: the home page is server-rendered, there is no client animation
-library (framer-motion was removed), every tech icon is bundled locally at build time (no
-runtime requests to api.iconify.design), and gallery photos are re-compressed in place with
-EXIF/GPS metadata stripped. Lighthouse mobile performance is 90+ on `/`, `/travel`, and
-`/food`.
-
 ### Quick start
 
 Requires Node.js 24.
