@@ -1,7 +1,11 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  "entry": ["app/**/{page,layout,route}.{ts,tsx}", "e2e/**/*.spec.ts"],
-  "project": ["**/*.{ts,tsx}"],
+  "entry": [
+    "app/**/{page,layout,route}.{ts,tsx}",
+    "e2e/**/*.spec.ts",
+    "scripts/*.mjs"
+  ],
+  "project": ["**/*.{ts,tsx}", "scripts/*.mjs"],
   "ignore": ["components/ui/**"],
   "ignoreDependencies": [
     "tailwindcss",
