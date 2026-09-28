@@ -68,7 +68,7 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
         value: "full-stack-web-developer",
         label: (
           <span className="text-left leading-normal pl-2 md:pl-0 inline-block">
-            full stack web developer based out of nyc and a{" "}
+            full-stack dev based in nyc and a{" "}
             <span className="text-[#B8860B] dark:text-primary font-semibold">
               cu boulder alum
             </span>

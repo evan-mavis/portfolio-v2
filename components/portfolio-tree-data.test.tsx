@@ -105,6 +105,15 @@ describe("portfolio tree data", () => {
     ]);
   });
 
+  it("uses the short intro label", () => {
+    const intro = PORTFOLIO_TREE_DATA[0];
+    expect(intro.kind).toBe("folder");
+    if (intro.kind !== "folder") return;
+    expect(labelText(intro.children[0].label)).toBe(
+      "full-stack dev based in nyc and a cu boulder alum/",
+    );
+  });
+
   it("uses globally unique folder values", () => {
     expect(new Set(ALL_FOLDER_VALUES).size).toBe(ALL_FOLDER_VALUES.length);
   });

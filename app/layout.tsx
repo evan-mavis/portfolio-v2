@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/avatar-mandalorian.webp", type: "image/webp" }],
+    icon: [{ url: "/favicon-circle.svg", type: "image/svg+xml" }],
   },
 };
 

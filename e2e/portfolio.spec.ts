@@ -74,10 +74,24 @@ test("reload starts with the intro folders open", async ({ page }) => {
   await expect(page.getByText("tech i use/")).toBeVisible();
 });
 
-test("the favicon uses the mandalorian avatar", async ({ page }) => {
+test("the favicon uses the circular mandalorian avatar", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('link[rel="icon"]')).toHaveAttribute(
     "href",
-    "/avatar-mandalorian.webp",
+    "/favicon-circle.svg",
   );
+  const favicon = await page.request.get("/favicon-circle.svg");
+  expect(favicon.ok()).toBe(true);
+  expect(await favicon.text()).toContain('<clipPath id="circle">');
+  const cornersAreTransparent = await page.evaluate(async () => {
+    const image = new Image();
+    image.src = "/favicon-circle.svg";
+    await image.decode();
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = 32;
+    const context = canvas.getContext("2d")!;
+    context.drawImage(image, 0, 0, 32, 32);
+    return context.getImageData(0, 0, 1, 1).data[3] === 0;
+  });
+  expect(cornersAreTransparent).toBe(true);
 });
