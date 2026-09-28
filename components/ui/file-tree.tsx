@@ -29,6 +29,7 @@ type TreeContextProps = {
   handleExpand: (id: string) => void;
   selectItem: (id: string) => void;
   setExpandedItems?: React.Dispatch<React.SetStateAction<string[] | undefined>>;
+  isControlled: boolean;
   openIcon?: React.ReactNode;
   closeIcon?: React.ReactNode;
   direction: "rtl" | "ltr";
@@ -51,6 +52,8 @@ type TreeViewProps = {
   indicator?: boolean;
   elements?: TreeViewElement[];
   initialExpandedItems?: string[];
+  expandedItems?: string[];
+  onExpandedChange?: (expandedItems: string[]) => void;
   openIcon?: React.ReactNode;
   closeIcon?: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>;
@@ -62,6 +65,8 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       elements,
       initialSelectedId,
       initialExpandedItems,
+      expandedItems: controlledExpandedItems,
+      onExpandedChange,
       children,
       indicator = true,
       openIcon,
@@ -74,22 +79,47 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
     const [selectedId, setSelectedId] = useState<string | undefined>(
       initialSelectedId,
     );
-    const [expandedItems, setExpandedItems] = useState<string[] | undefined>(
-      initialExpandedItems,
+    const [uncontrolledExpandedItems, setUncontrolledExpandedItems] = useState<
+      string[] | undefined
+    >(initialExpandedItems);
+
+    const isControlled = controlledExpandedItems !== undefined;
+    const expandedItems = isControlled
+      ? controlledExpandedItems
+      : uncontrolledExpandedItems;
+
+    const setExpandedItems = useCallback<
+      React.Dispatch<React.SetStateAction<string[] | undefined>>
+    >(
+      (value) => {
+        if (isControlled) {
+          const next =
+            typeof value === "function"
+              ? value(controlledExpandedItems)
+              : value;
+          onExpandedChange?.(next ?? []);
+          return;
+        }
+        setUncontrolledExpandedItems(value);
+      },
+      [isControlled, controlledExpandedItems, onExpandedChange],
     );
 
     const selectItem = useCallback((id: string) => {
       setSelectedId(id);
     }, []);
 
-    const handleExpand = useCallback((id: string) => {
-      setExpandedItems((prev) => {
-        if (prev?.includes(id)) {
-          return prev.filter((item) => item !== id);
-        }
-        return [...(prev ?? []), id];
-      });
-    }, []);
+    const handleExpand = useCallback(
+      (id: string) => {
+        setExpandedItems((prev) => {
+          if (prev?.includes(id)) {
+            return prev.filter((item) => item !== id);
+          }
+          return [...(prev ?? []), id];
+        });
+      },
+      [setExpandedItems],
+    );
 
     const expandSpecificTargetedElements = useCallback(
       (elements?: TreeViewElement[], selectId?: string) => {
@@ -125,7 +155,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           findParent(element);
         });
       },
-      [],
+      [setExpandedItems],
     );
 
     useEffect(() => {
@@ -144,6 +174,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           handleExpand,
           selectItem,
           setExpandedItems,
+          isControlled,
           indicator,
           openIcon,
           closeIcon,
@@ -162,9 +193,14 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
               defaultValue={expandedItems}
               value={expandedItems}
               className="flex flex-col gap-1"
-              onValueChange={(value) =>
-                setExpandedItems((prev) => [...(prev ?? []), value[0]])
-              }
+              onValueChange={(value) => {
+                if (isControlled) {
+                  // radix passes the full next value for type="multiple"
+                  onExpandedChange?.(value);
+                  return;
+                }
+                setExpandedItems((prev) => [...(prev ?? []), value[0]]);
+              }}
               dir={dir as Direction}
             >
               {children}
@@ -223,6 +259,7 @@ const Folder = ({
     expandedItems,
     indicator,
     setExpandedItems,
+    isControlled,
     openIcon,
     closeIcon,
   } = useTree();
@@ -261,6 +298,11 @@ const Folder = ({
           defaultValue={expandedItems}
           value={expandedItems}
           onValueChange={(value) => {
+            if (isControlled) {
+              // radix passes the full next value for type="multiple"
+              setExpandedItems?.(value);
+              return;
+            }
             setExpandedItems?.((prev) => [...(prev ?? []), value[0]]);
           }}
         >
