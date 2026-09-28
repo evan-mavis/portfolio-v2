@@ -191,21 +191,12 @@ describe("portfolio tree data", () => {
 
   it("orders the contact links", () => {
     const intro = findFolder(PORTFOLIO_TREE_DATA, "full-stack-web-developer");
-    expect(intro.slice(-5).map((node) => node.value)).toEqual([
+    expect(intro.slice(-4).map((node) => node.value)).toEqual([
       "github",
       "linkedin",
-      "x-profile",
       "email",
       "resume",
     ]);
-  });
-
-  it("links x to evan's profile", () => {
-    expect(findFile(PORTFOLIO_TREE_DATA, "x-profile")?.link).toEqual({
-      type: "external",
-      href: "https://x.com/evan_mav",
-      newTab: true,
-    });
   });
 
   it("links my agentic workflow skills to the skills repo in a new tab", () => {

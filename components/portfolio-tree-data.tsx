@@ -357,19 +357,6 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
           },
           {
             kind: "file",
-            value: "x-profile",
-            label: "x profile",
-            techIcon: "x",
-            link: {
-              type: "external",
-              href: "https://x.com/evan_mav",
-              newTab: true,
-            },
-            trackEvent: "x_profile_click",
-            className: FILE_CLASS,
-          },
-          {
-            kind: "file",
             value: "email",
             label: "email",
             techIcon: "email",
