@@ -198,6 +198,19 @@ describe("portfolio tree data", () => {
     );
   });
 
+  it("links airgoods below the career note", () => {
+    const children = findFolder(PORTFOLIO_TREE_DATA, "airgoods");
+    expect(children.map((node) => node.value)).toEqual([
+      "airgoods-desc",
+      "airgoods-link",
+    ]);
+    expect(findFile(children, "airgoods-link")?.link).toEqual({
+      type: "external",
+      href: "https://airgoods.com/",
+      newTab: true,
+    });
+  });
+
   it("orders the contact links", () => {
     const intro = findFolder(PORTFOLIO_TREE_DATA, "full-stack-web-developer");
     expect(intro.slice(-4).map((node) => node.value)).toEqual([

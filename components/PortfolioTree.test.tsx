@@ -123,7 +123,7 @@ describe("PortfolioTree", () => {
   it("reports the toggled expansion when an expanded folder is collapsed", () => {
     const onExpandedChange = vi.fn();
     renderTree(DEFAULT_EXPANDED_ITEMS, onExpandedChange);
-    fireEvent.click(screen.getByText(/full stack web developer/));
+    fireEvent.click(screen.getByText(/full-stack dev based in nyc/));
     expect(onExpandedChange).toHaveBeenCalledWith(["evan-mavis"]);
   });
 
@@ -131,6 +131,7 @@ describe("PortfolioTree", () => {
     ["resume", "resume_click"],
     ["linkedin", "linkedin_click"],
     ["github", "github_click"],
+    ["check us out!", "airgoods_click"],
     ["email", "email_click"],
     ["travel", "travel_page_click"],
     ["food trip to southeast asia + japan", "food_page_click"],

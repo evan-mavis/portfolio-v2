@@ -98,6 +98,19 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
                     "airgoods-desc",
                     "super excited to be here!!",
                   ),
+                  {
+                    kind: "file",
+                    value: "airgoods-link",
+                    label: "check us out!",
+                    bulletIcon: true,
+                    link: {
+                      type: "external",
+                      href: "https://airgoods.com/",
+                      newTab: true,
+                    },
+                    trackEvent: "airgoods_click",
+                    className: DESCRIPTION_FILE_CLASS,
+                  },
                 ],
               },
               {
