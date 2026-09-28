@@ -13,35 +13,34 @@ const jersey10 = Jersey_10({
 
 export const metadata: Metadata = {
   title: {
-    default: "Evan Mavis // Portfolio",
-    template: "Evan Mavis // %s",
+    default: "evan mavis // portfolio",
+    template: "evan mavis // %s",
   },
   description:
-    "Full stack web developer based in NYC and CU Boulder alum. Specializing in Next.js, React, TypeScript, and modern web technologies.",
+    "full stack web developer based in nyc and cu boulder alum. specializing in next.js, react, typescript, and modern web technologies.",
   keywords: [
     "web developer",
     "full stack developer",
-    "Next.js",
-    "React",
-    "TypeScript",
+    "next.js",
+    "react",
+    "typescript",
     "portfolio",
-    "NYC developer",
+    "nyc developer",
   ],
-  authors: [{ name: "Evan Mavis" }],
-  creator: "Evan Mavis",
+  authors: [{ name: "evan mavis" }],
+  creator: "evan mavis",
   openGraph: {
     type: "website",
-    locale: "en_US",
     url: "https://evan-mavis.dev",
-    title: "Evan Mavis - Full Stack Web Developer Portfolio",
+    title: "evan mavis - full stack web developer portfolio",
     description:
-      "Full stack web developer based in NYC and CU Boulder alum. Specializing in Next.js, React, TypeScript, and modern web technologies.",
-    siteName: "Evan Mavis Portfolio",
+      "full stack web developer based in nyc and cu boulder alum. specializing in next.js, react, typescript, and modern web technologies.",
+    siteName: "evan mavis portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Evan Mavis - Full Stack Web Developer Portfolio",
-    description: "Full stack web developer based in NYC and CU Boulder alum.",
+    title: "evan mavis - full stack web developer portfolio",
+    description: "full stack web developer based in nyc and cu boulder alum.",
   },
   robots: {
     index: true,

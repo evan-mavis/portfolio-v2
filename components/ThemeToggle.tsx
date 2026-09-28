@@ -1,12 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
+import { useMountEffect } from "@/lib/use-mount-effect";
 
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
+  // Gate on mounted, not resolvedTheme: next-themes resolves the system theme
+  // synchronously in a state initializer on the client's first render, while
+  // the server renders resolvedTheme as undefined. Branching on resolvedTheme
+  // therefore makes the server's first paint differ from the client's and
+  // hydration fails (React #418). A mounted flag is false on both first
+  // renders, so the placeholder matches until after hydration.
+  const [mounted, setMounted] = useState(false);
+
+  useMountEffect(() => {
+    setMounted(true);
+  });
 
   const handleToggle = () => {
     if (theme === "system") {
@@ -18,11 +31,11 @@ export function ThemeToggle() {
     }
   };
 
-  if (!resolvedTheme) {
+  if (!mounted || !resolvedTheme) {
     return (
       <Button variant="outline" size="icon" disabled>
         <Sun className="h-[1.2rem] w-[1.2rem]" />
-        <span className="sr-only">Toggle theme</span>
+        <span className="sr-only">toggle theme</span>
       </Button>
     );
   }
@@ -60,7 +73,7 @@ export function ThemeToggle() {
         }}
       />
 
-      <span className="sr-only">Toggle theme</span>
+      <span className="sr-only">toggle theme</span>
     </Button>
   );
 }

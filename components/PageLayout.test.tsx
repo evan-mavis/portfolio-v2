@@ -5,7 +5,7 @@ import PageLayout from "./PageLayout";
 describe("PageLayout", () => {
   it("renders a back link to the home page", () => {
     render(<PageLayout>content</PageLayout>);
-    expect(screen.getByRole("link", { name: /back/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "back" })).toHaveAttribute(
       "href",
       "/",
     );

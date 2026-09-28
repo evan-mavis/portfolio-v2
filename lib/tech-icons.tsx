@@ -1,60 +1,25 @@
 import React from "react";
-import { Icon } from "@iconify/react";
 import { FileIcon } from "lucide-react";
+import { GENERATED_ICONS } from "./icons-generated";
 
-// Map technology names to their Iconify icons
+const iconClass = "w-[1em] h-[1em]";
+
+// Renders a bundled inline SVG for known tech names (see scripts/generate-icons.mjs),
+// falling back to the lucide file icon for anything unmapped.
 export function getTechIcon(techName: string): React.ReactNode {
-  const iconClass = "w-[1em] h-[1em]";
+  const icon = GENERATED_ICONS[techName.toLowerCase().trim()];
 
-  const iconMap: Record<string, React.ReactNode> = {
-    // Tech stack
-    postgres: <Icon icon="simple-icons:postgresql" className={iconClass} />,
-    azure: <Icon icon="simple-icons:azure" className={iconClass} />,
-    nextjs: <Icon icon="file-icons:nextjs" className={iconClass} />,
-    vite: <Icon icon="simple-icons:vite" className={iconClass} />,
-    typescript: <Icon icon="simple-icons:typescript" className={iconClass} />,
-    shadcn: <Icon icon="simple-icons:shadcnui" className={iconClass} />,
-    tailwind: <Icon icon="simple-icons:tailwindcss" className={iconClass} />,
-    drizzle: <Icon icon="simple-icons:drizzle" className={iconClass} />,
-    neon: (
-      <Icon
-        icon="material-symbols-light:database-outline"
-        className={iconClass}
-      />
-    ),
-    vercel: <Icon icon="simple-icons:vercel" className={iconClass} />,
-    express: <Icon icon="simple-icons:express" className={iconClass} />,
-    betterauth: <Icon icon="simple-icons:betterauth" className={iconClass} />,
-    github: <Icon icon="simple-icons:github" className={iconClass} />,
+  if (!icon) {
+    return <FileIcon className={iconClass} />;
+  }
 
-    // Other tech
-    git: <Icon icon="simple-icons:git" className={iconClass} />,
-    cursor: <Icon icon="simple-icons:cursor" className={iconClass} />,
-    codex: <Icon icon="simple-icons:openai" className={iconClass} />,
-    obsidian: <Icon icon="simple-icons:obsidian" className={iconClass} />,
-    excalidraw: <Icon icon="simple-icons:excalidraw" className={iconClass} />,
-    linear: <Icon icon="simple-icons:linear" className={iconClass} />,
-    notion: <Icon icon="simple-icons:notion" className={iconClass} />,
-    slack: <Icon icon="simple-icons:slack" className={iconClass} />,
-    python: <Icon icon="simple-icons:python" className={iconClass} />,
-    react: <Icon icon="simple-icons:react" className={iconClass} />,
-
-    // Social/contact
-    linkedin: <Icon icon="simple-icons:linkedin" className={iconClass} />,
-    email: <Icon icon="ic:outline-email" className={iconClass} />,
-
-    // Other
-    travel: <Icon icon="game-icons:palm-tree" className={iconClass} />,
-    food: <Icon icon="fluent:food-24-regular" className={iconClass} />,
-    wishswipe: <Icon icon="weui:shop-outlined" className={iconClass} />,
-    chainlog: <Icon icon="system-uicons:chain" className={iconClass} />,
-
-    // Default fallback
-    default: <FileIcon className={iconClass} />,
-  };
-
-  // Normalize the tech name (lowercase, handle variations)
-  const normalized = techName.toLowerCase().trim();
-
-  return iconMap[normalized] || iconMap.default;
+  return (
+    <svg
+      className={iconClass}
+      viewBox={`0 0 ${icon.width} ${icon.height}`}
+      fill="currentColor"
+      aria-hidden="true"
+      dangerouslySetInnerHTML={{ __html: icon.body }}
+    />
+  );
 }

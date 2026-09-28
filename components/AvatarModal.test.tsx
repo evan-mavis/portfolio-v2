@@ -1,4 +1,4 @@
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import AvatarModal from "./AvatarModal";
 
@@ -8,6 +8,14 @@ describe("AvatarModal", () => {
       <AvatarModal isOpen={false} onClose={() => {}} avatarSrc="/a.jpeg" />,
     );
     expect(container).toBeEmptyDOMElement();
+  });
+
+  it("displays the given avatar image when open", () => {
+    render(
+      <AvatarModal isOpen onClose={() => {}} avatarSrc="/avatar-new.webp" />,
+    );
+    const image = screen.getByRole("img", { name: "evan mavis" });
+    expect(image.getAttribute("src")).toBe("/avatar-new.webp");
   });
 
   it("closes when the backdrop is clicked", () => {

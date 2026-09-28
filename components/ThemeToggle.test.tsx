@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
 import { useTheme } from "next-themes";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeToggle } from "./ThemeToggle";
@@ -22,7 +23,7 @@ describe("ThemeToggle", () => {
   it("is disabled until the theme resolves on the client", () => {
     mockTheme(undefined);
     render(<ThemeToggle />);
-    expect(screen.getByRole("button", { name: "Toggle theme" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "toggle theme" })).toBeDisabled();
   });
 
   it.each([
@@ -32,7 +33,23 @@ describe("ThemeToggle", () => {
   ])("switches from %s to %s", (theme, resolved, next) => {
     mockTheme(theme, resolved);
     render(<ThemeToggle />);
-    fireEvent.click(screen.getByRole("button", { name: "Toggle theme" }));
+    fireEvent.click(screen.getByRole("button", { name: "toggle theme" }));
     expect(setTheme).toHaveBeenCalledWith(next);
+  });
+
+  // Regression guard for the React #418 hydration mismatch on /: next-themes
+  // resolves the system theme synchronously on the client's first render, so
+  // branching on resolvedTheme makes server and client first renders differ.
+  // The first render (renderToString never runs mount effects) must be the
+  // identical disabled placeholder no matter what useTheme reports.
+  it("renders the identical placeholder on first render for any theme state", () => {
+    mockTheme(undefined);
+    const unresolvedHtml = renderToString(<ThemeToggle />);
+
+    mockTheme("system", "dark");
+    const resolvedHtml = renderToString(<ThemeToggle />);
+
+    expect(resolvedHtml).toBe(unresolvedHtml);
+    expect(resolvedHtml).toContain("disabled");
   });
 });
