@@ -6,7 +6,7 @@ import { useTreeStateContext } from "./TreeStateProvider";
 import {
   ALL_FOLDER_VALUES,
   DEFAULT_EXPANDED_ITEMS,
-} from "./portfolio-tree-data";
+} from "@/lib/portfolio-data";
 
 vi.mock("./TreeStateProvider", () => ({ useTreeStateContext: vi.fn() }));
 

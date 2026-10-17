@@ -6,8 +6,8 @@ import { getTechIcon } from "./tech-icons";
 function renderIcon(name: string): SVGSVGElement {
   const { container } = render(<>{getTechIcon(name)}</>);
   const svg = container.querySelector("svg");
-  expect(svg).not.toBeNull();
-  return svg as unknown as SVGSVGElement;
+  if (!svg) throw new Error(`Missing SVG for ${name}`);
+  return svg;
 }
 
 describe("getTechIcon", () => {
@@ -50,12 +50,11 @@ describe("getTechIcon", () => {
     "git",
     "cursor",
     "codex",
-    "obsidian",
+    "devin",
     "excalidraw",
     "linear",
     "notion",
     "slack",
-    "python",
     "react",
     "linkedin",
     "email",

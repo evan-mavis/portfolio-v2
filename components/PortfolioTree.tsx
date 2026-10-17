@@ -2,14 +2,15 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { Folder, Tree, File } from "./ui/file-tree";
+import { Folder, Tree, File } from "./FileTree";
+import AvatarBadge from "./AvatarBadge";
 import { getTechIcon } from "@/lib/tech-icons";
 import { useMountEffect } from "@/lib/use-mount-effect";
 import {
   PORTFOLIO_TREE_DATA,
   type TreeFileNode,
   type TreeNode,
-} from "./portfolio-tree-data";
+} from "@/lib/portfolio-data";
 import { useTreeStateContext } from "./TreeStateProvider";
 import { CircleSmall } from "lucide-react";
 import { track } from "@vercel/analytics";
@@ -90,6 +91,7 @@ function renderNode(node: TreeNode): React.ReactNode {
         element={node.label}
         value={node.value}
         className={node.className}
+        accessory={node.accessory === "avatar" ? <AvatarBadge /> : undefined}
       >
         {node.children.map(renderNode)}
       </Folder>
@@ -100,6 +102,7 @@ function renderNode(node: TreeNode): React.ReactNode {
       key={node.value}
       value={node.value}
       fileIcon={renderFileIcon(node)}
+      isLink={Boolean(node.link)}
       className={node.className}
     >
       {renderFileLabel(node)}
@@ -114,15 +117,11 @@ export default function PortfolioTree() {
   const [minWidth, setMinWidth] = useState<number | undefined>(undefined);
 
   useMountEffect(() => {
-    // use ResizeObserver to track width and maintain the maximum width
-    // this ensures the container maintains its width when first two folders are expanded
-    // even when they're manually collapsed
+    // Keep the tree from shifting horizontally when folders collapse.
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const width = entry.contentRect.width;
-        setMinWidth((prev) => {
-          return prev === undefined ? width : Math.max(prev, width);
-        });
+        setMinWidth((prev) => Math.max(prev ?? 0, width));
       }
     });
     if (containerRef.current) {
@@ -141,7 +140,7 @@ export default function PortfolioTree() {
       style={{ minWidth: minWidth ? `${minWidth}px` : undefined }}
     >
       <Tree
-        className="w-auto h-auto text-foreground dark:text-[#ffd48a] text-base lg:text-lg"
+        className="w-auto h-auto text-foreground text-base lg:text-lg"
         expandedItems={expandedItems}
         onExpandedChange={onExpandedChange}
       >

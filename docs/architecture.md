@@ -29,16 +29,16 @@ flowchart LR
 ## Request flow
 
 1. Pages are prerendered at build time. Vercel serves them from the CDN.
-2. Client components (`PortfolioTree`, the galleries) hydrate and run the theme toggle (`next-themes`, stored in `localStorage`). There is no load-in animation; content is visible on first paint.
+2. Client components (`PortfolioTree`, `ButtonsRow`, `FoodGallery`) hydrate. Travel and both page shells render on the server. Theme preference uses `next-themes` and `localStorage`. There is no load-in animation; content is visible on first paint.
 3. Link clicks call `track()`, which sends an anonymous event to Vercel Analytics.
-4. `/api/health` is the only dynamic route. It returns `{ status, commit }` for uptime checks.
+4. `/api/health` is the only dynamic route. It returns `{ status, commit, requestId }` for uptime checks.
 
 ## Home page: server shell, data-driven tree
 
 `app/page.tsx` is a server component; interactivity lives in client islands
 (`PortfolioTree`, `ButtonsRow`, `ThemeToggle`).
 
-- The tree is data-driven: `components/portfolio-tree-data.tsx` holds a typed
+- The tree is data-driven: `lib/portfolio-data.tsx` holds a typed
   `TreeNode` array (folders and files) rendered recursively by
   `components/PortfolioTree.tsx`.
 - Expansion state is controlled and persisted in `localStorage` under the key
@@ -48,6 +48,18 @@ flowchart LR
   the expand-all toggle. The server render uses the default expansion
   (`evan mavis/` + the job-title folder); the stored state is applied on mount,
   so reloads and gallery round-trips restore the exact tree.
+- `components/FileTree.tsx` contains the controlled Radix folders and selectable
+  file rows. Avatar buttons sit beside folder triggers; links are not nested
+  inside buttons. The avatar opens a native modal dialog.
+- The expand-all flag is derived from the expanded folder IDs. Storage retains
+  the existing `{ expanded, allExpanded }` format for compatibility.
+
+## Theme
+
+`app/globals.css` defines the semantic palette once per theme. Light mode uses
+paper (`#faf4e5`), charcoal ink (`#2a2c2c`), and moss (`#4f623e`). Dark mode
+keeps a black background with lighter moss (`#9aaa85`). Both retain the grid
+texture and Jersey 10 typography. Toggle icons share their animation styles.
 
 ## Icons: bundled at build time
 
@@ -55,9 +67,10 @@ The site makes no runtime requests to api.iconify.design. `lib/tech-icons.tsx`
 (`getTechIcon(name)`) renders inline SVGs from `lib/icons-generated.ts`, a
 generated module of SVG bodies built by `scripts/generate-icons.mjs` from the
 `@iconify-json/*` devDependencies (`@iconify/utils` at build time only).
-Brands with no iconify entry (inngest, factory) are hand-authored bodies in the
-script. Regenerate with `pnpm run icons:generate`; never edit the generated
-file by hand.
+Brands with no iconify entry use local bodies in the script. Devin's artwork
+is vendored in `scripts/assets/devin.json` from LobeHub's MIT-licensed icon set;
+the license is alongside it. Regenerate with `pnpm run icons:generate`; never
+edit the generated file by hand.
 
 ## Images
 
@@ -67,6 +80,15 @@ any jpg/jpeg/png over ~400 KB to max 2400px long edge, mozjpeg q80, EXIF/GPS
 stripped, same filename. Gallery `next/image` elements carry explicit
 width/height and `sizes` attributes so layout space is reserved (travel CLS is
 0). `next.config.ts` sets a long `minimumCacheTTL` for optimized images.
+
+Static photo metadata lives in `app/travel/travel-data.ts` and
+`app/food/food-data.ts`. Food tiers keep their label, color, and ordered photos
+together. Only `FoodGallery` needs client state for enlarging photos, via
+double-click or keyboard activation.
+
+`scripts/generate-favicon.mjs` generates the browser ICO (16/32/48px), PNG
+(192px), and Apple touch icon (180px) from `scripts/assets/favicon.jpeg`.
+Next.js discovers them through its file-based metadata conventions.
 
 ## Deploys
 

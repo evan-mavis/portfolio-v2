@@ -19,6 +19,7 @@ Open http://localhost:3000. No environment variables or external services are re
 - `pnpm test`, `pnpm run test:coverage`: unit tests (Vitest)
 - `pnpm run test:e2e`: browser tests (Playwright; run `pnpm exec playwright install chromium` first)
 - `pnpm run icons:generate`: regenerate `lib/icons-generated.ts` from the `@iconify-json/*` devDependencies (run after editing `ICON_SOURCES` in `scripts/generate-icons.mjs`)
+- `pnpm run favicon:generate`: regenerate browser and Apple icons from `scripts/assets/favicon.jpeg`
 - `pnpm run images:optimize`: re-encode oversized `public/` photos in place (max 2400px, mozjpeg q80, EXIF stripped)
 - `pnpm run check`: everything CI runs
 

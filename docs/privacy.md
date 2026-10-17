@@ -6,6 +6,7 @@ This site collects as little data as possible.
 
 - **Vercel Web Analytics**: page views and named click events (`resume_click`, `linkedin_click`, and so on). Vercel Analytics sets no cookies and does not store IP addresses or build cross-site profiles. See [Vercel's privacy policy](https://vercel.com/docs/analytics/privacy-policy).
 - **Theme preference**: stored only in the visitor's own `localStorage` by `next-themes`. It is never sent anywhere.
+- **Expanded folders**: stored only in the visitor's `localStorage` under `portfolio-tree-state`. This preserves the tree between visits and is never sent anywhere.
 
 ## What is not collected
 

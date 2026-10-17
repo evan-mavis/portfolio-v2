@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import AvatarBadge from "./AvatarBadge";
 
 type TreeFileLink =
   | { type: "internal"; href: string }
@@ -12,6 +11,7 @@ interface TreeFolderNode {
   value: string;
   label: ReactNode;
   className?: string;
+  accessory?: "avatar";
   children: TreeNode[];
 }
 
@@ -31,7 +31,7 @@ export type TreeNode = TreeFolderNode | TreeFileNode;
 const FOLDER_CLASS = "lg:text-lg";
 const FILE_CLASS = "lg:text-lg";
 const DESCRIPTION_FILE_CLASS = "lg:text-lg text-sm opacity-80";
-const YEAR_CLASS = "text-[#B8860B] dark:text-primary";
+const YEAR_CLASS = "text-primary";
 
 function descriptionFile(value: string, label: string): TreeFileNode {
   return {
@@ -55,12 +55,8 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
   {
     kind: "folder",
     value: "evan-mavis",
-    label: (
-      <>
-        evan mavis/
-        <AvatarBadge />
-      </>
-    ),
+    label: "evan mavis/",
+    accessory: "avatar",
     className: "text-3xl lg:text-4xl",
     children: [
       {
@@ -69,10 +65,7 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
         label: (
           <span className="text-left leading-normal pl-2 md:pl-0 inline-block">
             full stack web developer based out of nyc and a{" "}
-            <span className="text-[#B8860B] dark:text-primary font-semibold">
-              cu boulder alum
-            </span>
-            /
+            <span className="text-primary font-semibold">cu boulder alum</span>/
           </span>
         ),
         className: "text-xl lg:text-2xl [&>button]:gap-2 md:[&>button]:gap-1",
@@ -245,10 +238,10 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
                 label: "tooling/",
                 className: FOLDER_CLASS,
                 children: [
-                  techFile("cursor", "cursor"),
                   techFile("codex", "codex"),
-                  techFile("github", "github"),
                   techFile("factory", "factory"),
+                  techFile("cursor", "cursor"),
+                  techFile("github", "github"),
                   {
                     kind: "file",
                     value: "my-agentic-workflow-skills",
@@ -262,6 +255,7 @@ export const PORTFOLIO_TREE_DATA: TreeNode[] = [
                     trackEvent: "skills_repo_click",
                     className: FILE_CLASS,
                   },
+                  techFile("devin", "devin"),
                 ],
               },
               {

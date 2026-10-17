@@ -8,13 +8,9 @@ import { Button } from "@/components/ui/button";
 import { useMountEffect } from "@/lib/use-mount-effect";
 
 export function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  // Gate on mounted, not resolvedTheme: next-themes resolves the system theme
-  // synchronously in a state initializer on the client's first render, while
-  // the server renders resolvedTheme as undefined. Branching on resolvedTheme
-  // therefore makes the server's first paint differ from the client's and
-  // hydration fails (React #418). A mounted flag is false on both first
-  // renders, so the placeholder matches until after hydration.
+  const { setTheme, resolvedTheme } = useTheme();
+  // next-themes can resolve before hydration. Keep the first client render
+  // identical to the server's disabled placeholder.
   const [mounted, setMounted] = useState(false);
 
   useMountEffect(() => {
@@ -22,13 +18,7 @@ export function ThemeToggle() {
   });
 
   const handleToggle = () => {
-    if (theme === "system") {
-      setTheme("light");
-    } else if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   if (!mounted || !resolvedTheme) {
@@ -51,26 +41,14 @@ export function ThemeToggle() {
     >
       <Sun
         key={`sun-${resolvedTheme}`}
-        className={`absolute h-[1.2rem] w-[1.2rem] text-orange-500 ${
-          !isDark ? "scale-100 opacity-100" : "scale-0 opacity-0"
-        }`}
-        style={{
-          animation: !isDark
-            ? "theme-pop 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55)"
-            : undefined,
-        }}
+        className="toggle-icon text-primary"
+        data-active={!isDark}
       />
 
       <Moon
         key={`moon-${resolvedTheme}`}
-        className={`absolute h-[1.2rem] w-[1.2rem] text-purple-500 ${
-          isDark ? "scale-100 opacity-100" : "scale-0 opacity-0"
-        }`}
-        style={{
-          animation: isDark
-            ? "theme-pop 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55)"
-            : undefined,
-        }}
+        className="toggle-icon text-primary"
+        data-active={isDark}
       />
 
       <span className="sr-only">toggle theme</span>

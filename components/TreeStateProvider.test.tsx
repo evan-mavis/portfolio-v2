@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import ButtonsRow from "./ButtonsRow";
 import PortfolioTree from "./PortfolioTree";
 import { TreeStateProvider, useTreeStateContext } from "./TreeStateProvider";
-import { ALL_FOLDER_VALUES } from "./portfolio-tree-data";
+import { ALL_FOLDER_VALUES } from "@/lib/portfolio-data";
 import { TREE_STORAGE_KEY } from "@/lib/tree-state";
 
 vi.mock("./ThemeToggle", () => ({ ThemeToggle: () => null }));

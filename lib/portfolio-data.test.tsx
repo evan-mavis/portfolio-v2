@@ -8,7 +8,7 @@ import {
   PORTFOLIO_TREE_DATA,
   type TreeFileNode,
   type TreeNode,
-} from "./portfolio-tree-data";
+} from "./portfolio-data";
 
 function collectFolderValues(nodes: TreeNode[]): string[] {
   return nodes.flatMap((node) =>
@@ -144,7 +144,14 @@ describe("portfolio tree data", () => {
     ["observability", ["posthog", "sentry"]],
     [
       "tooling",
-      ["cursor", "codex", "github", "factory", "my-agentic-workflow-skills"],
+      [
+        "codex",
+        "factory",
+        "cursor",
+        "github",
+        "my-agentic-workflow-skills",
+        "devin",
+      ],
     ],
     ["productivity", ["linear", "notion", "slack", "excalidraw"]],
   ])("tech i use/%s contains exactly the expected items", (folder, items) => {
@@ -165,9 +172,11 @@ describe("portfolio tree data", () => {
     collect(techIUse);
     expect(files.length).toBeGreaterThan(0);
     for (const file of files) {
-      expect(file.techIcon, `techIcon for ${file.value}`).toBeDefined();
+      if (!file.techIcon) {
+        throw new Error(`Missing techIcon for ${file.value}`);
+      }
       expect(
-        GENERATED_ICONS[file.techIcon as string],
+        GENERATED_ICONS[file.techIcon],
         `bundled icon for ${file.value}`,
       ).toBeDefined();
     }

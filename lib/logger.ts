@@ -22,12 +22,14 @@ export function redact(value: unknown, depth = 0): unknown {
 }
 
 function write(level: LogLevel, message: string, fields: LogFields = {}) {
-  const entry = JSON.stringify({
-    level,
-    time: new Date().toISOString(),
-    msg: redact(message),
-    ...(redact(fields) as LogFields),
-  });
+  const entry = JSON.stringify(
+    redact({
+      level,
+      time: new Date().toISOString(),
+      msg: message,
+      ...fields,
+    }),
+  );
   if (level === "error") console.error(entry);
   else if (level === "warn") console.warn(entry);
   else console.log(entry);

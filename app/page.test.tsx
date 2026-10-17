@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { renderToString } from "react-dom/server";
 import { beforeEach, describe, expect, it } from "vitest";
 import Home from "./page";
-import { ALL_FOLDER_VALUES } from "@/components/portfolio-tree-data";
+import { ALL_FOLDER_VALUES } from "@/lib/portfolio-data";
 import { TREE_STORAGE_KEY } from "@/lib/tree-state";
 
 describe("home page server render", () => {

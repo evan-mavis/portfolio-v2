@@ -3,29 +3,21 @@ import { describe, expect, it, vi } from "vitest";
 import AvatarModal from "./AvatarModal";
 
 describe("AvatarModal", () => {
-  it("renders nothing while closed", () => {
-    const { container } = render(
-      <AvatarModal isOpen={false} onClose={() => {}} avatarSrc="/a.jpeg" />,
+  it("shows the given avatar in a named modal dialog", () => {
+    render(<AvatarModal onClose={() => {}} avatarSrc="/avatar-new.webp" />);
+    expect(
+      screen.getByRole("dialog", { name: "full photo of evan mavis" }),
+    ).toHaveAttribute("open");
+    expect(screen.getByRole("img", { name: "evan mavis" })).toHaveAttribute(
+      "src",
+      "/avatar-new.webp",
     );
-    expect(container).toBeEmptyDOMElement();
-  });
-
-  it("displays the given avatar image when open", () => {
-    render(
-      <AvatarModal isOpen onClose={() => {}} avatarSrc="/avatar-new.webp" />,
-    );
-    const image = screen.getByRole("img", { name: "evan mavis" });
-    expect(image.getAttribute("src")).toBe("/avatar-new.webp");
   });
 
   it("closes when the backdrop is clicked", () => {
     const onClose = vi.fn();
-    const { container } = render(
-      <AvatarModal isOpen onClose={onClose} avatarSrc="/a.jpeg" />,
-    );
-    const backdrop = container.querySelector(".backdrop-blur-md");
-    expect(backdrop).not.toBeNull();
-    fireEvent.click(backdrop!);
+    render(<AvatarModal onClose={onClose} avatarSrc="/avatar-new.webp" />);
+    fireEvent.click(screen.getByRole("dialog"));
     expect(onClose).toHaveBeenCalledOnce();
   });
 });

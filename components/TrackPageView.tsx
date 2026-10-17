@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
 import { track } from "@vercel/analytics";
+import { useMountEffect } from "@/lib/use-mount-effect";
 
 interface TrackPageViewProps {
   event: string;
 }
 
 export default function TrackPageView({ event }: TrackPageViewProps) {
-  useEffect(() => {
+  useMountEffect(() => {
     track(event);
-  }, [event]);
+  });
 
   return null;
 }

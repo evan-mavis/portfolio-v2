@@ -28,14 +28,16 @@ describe("logger", () => {
   it("writes one JSON line per entry with redacted fields", () => {
     const log = vi.spyOn(console, "log").mockImplementation(() => {});
     logger.info("visit", { path: "/", token: "secret" });
-    const entry = JSON.parse(log.mock.calls[0][0] as string);
+    const line: unknown = log.mock.calls[0][0];
+    if (typeof line !== "string") throw new Error("Expected a JSON log line");
+    const entry: unknown = JSON.parse(line);
     expect(entry).toMatchObject({
       level: "info",
       msg: "visit",
       path: "/",
       token: "[REDACTED]",
     });
-    expect(entry.time).toEqual(expect.any(String));
+    expect(entry).toMatchObject({ time: expect.any(String) });
   });
 
   it("routes errors and warnings to the matching console method", () => {

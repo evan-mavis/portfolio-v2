@@ -1,9 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
-import {
-  ALL_FOLDER_VALUES,
-  DEFAULT_EXPANDED_ITEMS,
-} from "@/components/portfolio-tree-data";
+import { ALL_FOLDER_VALUES, DEFAULT_EXPANDED_ITEMS } from "./portfolio-data";
 import { readTreeState, TREE_STORAGE_KEY } from "./tree-state";
 import { useTreeState } from "./use-tree-state";
 
@@ -39,6 +36,16 @@ describe("useTreeState", () => {
     );
     const { result } = renderHook(() => useTreeState());
     expect(result.current.allExpanded).toBe(true);
+  });
+
+  it("derives expand-all from the folders even when the stored flag is stale", () => {
+    window.localStorage.setItem(
+      TREE_STORAGE_KEY,
+      JSON.stringify({ expanded: ["evan-mavis"], allExpanded: true }),
+    );
+    const { result } = renderHook(() => useTreeState());
+    expect(result.current.expandedItems).toEqual(["evan-mavis"]);
+    expect(result.current.allExpanded).toBe(false);
   });
 
   it("falls back to defaults when stored state is corrupt", () => {

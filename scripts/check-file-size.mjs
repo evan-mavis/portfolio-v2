@@ -8,12 +8,12 @@ const PUBLIC_LIMIT = 10 * 1024 * KB;
 
 const files = execFileSync(
   "git",
-  ["diff", "--cached", "--name-only", "--diff-filter=ACM"],
+  ["diff", "--cached", "--name-only", "--diff-filter=ACM", "-z"],
   { encoding: "utf8" },
 )
-  .split("\n")
+  .split("\0")
   .filter(Boolean)
-  .filter((file) => !/(pnpm-lock\.yaml)$/.test(file));
+  .filter((file) => file !== "pnpm-lock.yaml");
 
 const oversized = files.filter((file) => {
   const limit = file.startsWith("public/") ? PUBLIC_LIMIT : DEFAULT_LIMIT;

@@ -5,12 +5,5 @@
     "e2e/**/*.spec.ts",
     "scripts/*.mjs"
   ],
-  "project": ["**/*.{ts,tsx}", "scripts/*.mjs"],
-  "ignore": ["components/ui/**"],
-  "ignoreDependencies": [
-    "tailwindcss",
-    "tw-animate-css",
-    "sharp",
-    "@radix-ui/react-dropdown-menu"
-  ]
+  "project": ["**/*.{ts,tsx,css}", "scripts/*.mjs"]
 }

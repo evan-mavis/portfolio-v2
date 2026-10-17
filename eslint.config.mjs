@@ -9,7 +9,6 @@ const eslintConfig = defineConfig([
     rules: {
       complexity: ["error", { max: 15 }],
       "max-depth": ["error", 4],
-      // PortfolioTree.tsx is a large declarative JSX tree; split before exceeding this.
       "max-lines": [
         "error",
         { max: 700, skipBlankLines: true, skipComments: true },

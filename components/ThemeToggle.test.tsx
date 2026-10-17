@@ -28,6 +28,7 @@ describe("ThemeToggle", () => {
 
   it.each([
     ["system", "dark", "light"],
+    ["system", "light", "dark"],
     ["light", "light", "dark"],
     ["dark", "dark", "light"],
   ])("switches from %s to %s", (theme, resolved, next) => {

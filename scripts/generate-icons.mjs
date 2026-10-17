@@ -11,6 +11,7 @@ import icIcons from "@iconify-json/ic/icons.json" with { type: "json" };
 import materialSymbolsLight from "@iconify-json/material-symbols-light/icons.json" with { type: "json" };
 import simpleIcons from "@iconify-json/simple-icons/icons.json" with { type: "json" };
 import systemUicons from "@iconify-json/system-uicons/icons.json" with { type: "json" };
+import devin from "./assets/devin.json" with { type: "json" };
 
 const OUTPUT_FILE = new URL("../lib/icons-generated.ts", import.meta.url);
 
@@ -44,10 +45,8 @@ const ICON_SOURCES = {
   neon: "material-symbols-light:database-outline",
   nextjs: "file-icons:nextjs",
   notion: "simple-icons:notion",
-  obsidian: "simple-icons:obsidian",
   posthog: "simple-icons:posthog",
   postgres: "simple-icons:postgresql",
-  python: "simple-icons:python",
   react: "simple-icons:react",
   render: "simple-icons:render",
   resend: "simple-icons:resend",
@@ -65,6 +64,8 @@ const ICON_SOURCES = {
 
 // Brands with no iconify entry get hand-authored bodies (fill/stroke currentColor).
 const CUSTOM_ICONS = {
+  // @lobehub/icons-static-svg 1.95.1, MIT; see assets/devin.LICENSE.
+  devin,
   // inngest: simplified pulse glyph (no simple-icons entry exists).
   inngest: {
     body: '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M2 12h4l3-8 4 16 3-8h4"/>',

@@ -3,64 +3,36 @@
 import { useState } from "react";
 import AvatarModal from "./AvatarModal";
 
-const FRONT_AVATAR_SRC = "/avatar-new.webp";
-const BACK_AVATAR_SRC = "/avatar-mandalorian.webp";
-
-const FACE_CLASS =
-  "avatar-flip-face absolute inset-0 overflow-hidden rounded-full border border-primary bg-primary";
+const AVATAR_SRC = "/avatar-new.webp";
 
 export default function AvatarBadge() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (event: React.SyntheticEvent) => {
-    event.stopPropagation();
-    setIsModalOpen(true);
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openModal(event);
-    }
-  };
-
   return (
     <>
-      <div
-        role="button"
-        tabIndex={0}
+      <button
+        type="button"
         aria-label="evan mavis avatar, opens full photo"
-        className="avatar-flip relative ml-2 inline-block size-12 cursor-pointer rounded-full align-middle"
-        onClick={openModal}
-        onKeyDown={handleKeyDown}
+        aria-haspopup="dialog"
+        className="ml-2 inline-block size-12 shrink-0 cursor-pointer overflow-hidden rounded-full border border-primary bg-primary align-middle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        onClick={() => setIsModalOpen(true)}
       >
-        <span className="avatar-flip-inner relative block size-full">
-          <span className={FACE_CLASS}>
-            {/* pre-sized static webp; plain img keeps the flip faces light */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={FRONT_AVATAR_SRC}
-              alt=""
-              loading="eager"
-              className="size-full object-cover object-center"
-            />
-          </span>
-          <span className={`avatar-flip-back ${FACE_CLASS}`}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={BACK_AVATAR_SRC}
-              alt=""
-              loading="eager"
-              className="size-full object-cover object-center"
-            />
-          </span>
-        </span>
-      </div>
-      <AvatarModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        avatarSrc={FRONT_AVATAR_SRC}
-      />
+        {/* Pre-sized local WebP needs no image optimization. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={AVATAR_SRC}
+          alt=""
+          width={48}
+          height={48}
+          className="size-full object-cover object-center"
+        />
+      </button>
+      {isModalOpen && (
+        <AvatarModal
+          onClose={() => setIsModalOpen(false)}
+          avatarSrc={AVATAR_SRC}
+        />
+      )}
     </>
   );
 }

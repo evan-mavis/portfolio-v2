@@ -9,7 +9,16 @@ class ResizeObserverStub {
   unobserve() {}
   disconnect() {}
 }
-globalThis.ResizeObserver ??= ResizeObserverStub as typeof ResizeObserver;
+globalThis.ResizeObserver ??= ResizeObserverStub;
+
+if (typeof HTMLDialogElement !== "undefined") {
+  HTMLDialogElement.prototype.showModal ??= function () {
+    this.open = true;
+  };
+  HTMLDialogElement.prototype.close ??= function () {
+    this.open = false;
+  };
+}
 
 afterEach(() => {
   cleanup();

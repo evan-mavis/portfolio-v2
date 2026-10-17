@@ -4,63 +4,44 @@ import AvatarBadge from "./AvatarBadge";
 
 const AVATAR_LABEL = "evan mavis avatar, opens full photo";
 
-function renderBadge() {
-  return render(<AvatarBadge />);
-}
-
-function getTrigger() {
-  return screen.getByRole("button", { name: AVATAR_LABEL });
-}
-
 describe("AvatarBadge", () => {
-  it("renders a focusable element with button semantics and an accessible label", () => {
-    renderBadge();
-    const trigger = getTrigger();
-    expect(trigger).toHaveAttribute("tabindex", "0");
+  it("renders a native button with one static profile photo", () => {
+    render(<AvatarBadge />);
+    const trigger = screen.getByRole("button", { name: AVATAR_LABEL });
+    expect(trigger.tagName).toBe("BUTTON");
+    expect(trigger).toHaveAttribute("aria-haspopup", "dialog");
+    const image = screen.getByRole("presentation");
+    expect(image).toHaveAttribute("src", "/avatar-new.webp");
   });
 
-  it("shows the new photo on the front face and the mandalorian on the back face", () => {
-    renderBadge();
-    const srcs = screen
-      .getAllByRole("presentation")
-      .map((image) => image.getAttribute("src"));
-    expect(srcs).toContain("/avatar-new.webp");
-    expect(srcs).toContain("/avatar-mandalorian.webp");
-    expect(srcs).not.toContain("/avatar.jpeg");
+  it("does not change the photo on hover or focus", () => {
+    render(<AvatarBadge />);
+    const trigger = screen.getByRole("button", { name: AVATAR_LABEL });
+    fireEvent.mouseOver(trigger);
+    fireEvent.focus(trigger);
+    expect(screen.getAllByRole("presentation")).toHaveLength(1);
+    expect(screen.getByRole("presentation")).toHaveAttribute(
+      "src",
+      "/avatar-new.webp",
+    );
   });
 
-  it("uses the flip container classes for the css 3d flip on hover and focus", () => {
-    renderBadge();
-    const trigger = getTrigger();
-    expect(trigger.className).toContain("avatar-flip");
-    const inner = trigger.firstElementChild;
-    expect(inner).not.toBeNull();
-    expect(inner!.className).toContain("avatar-flip-inner");
-    const faces = inner!.querySelectorAll(".avatar-flip-face");
-    expect(faces).toHaveLength(2);
-    expect(faces[1].className).toContain("avatar-flip-back");
+  it("opens the full photo and closes it through the dialog", () => {
+    render(<AvatarBadge />);
+    fireEvent.click(screen.getByRole("button", { name: AVATAR_LABEL }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "evan mavis" })).toHaveAttribute(
+      "src",
+      "/avatar-new.webp",
+    );
+    fireEvent.click(screen.getByRole("button", { name: "close full photo" }));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
-  it("opens the modal showing the new photo when clicked", () => {
-    renderBadge();
-    fireEvent.click(getTrigger());
-    const modalImage = screen.getByRole("img", { name: "evan mavis" });
-    expect(modalImage.getAttribute("src")).toBe("/avatar-new.webp");
-  });
-
-  it("opens the modal with the keyboard and closes it on backdrop click", () => {
-    const { container } = renderBadge();
-    const trigger = getTrigger();
-
-    fireEvent.keyDown(trigger, { key: "Enter" });
-    expect(screen.getByRole("img", { name: "evan mavis" })).toBeInTheDocument();
-
-    const backdrop = container.querySelector(".backdrop-blur-md");
-    expect(backdrop).not.toBeNull();
-    fireEvent.click(backdrop!);
-    expect(screen.queryByRole("img", { name: "evan mavis" })).toBeNull();
-
-    fireEvent.keyDown(trigger, { key: " " });
-    expect(screen.getByRole("img", { name: "evan mavis" })).toBeInTheDocument();
+  it("closes when the browser cancels the dialog", () => {
+    render(<AvatarBadge />);
+    fireEvent.click(screen.getByRole("button", { name: AVATAR_LABEL }));
+    fireEvent(screen.getByRole("dialog"), new Event("cancel"));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 });

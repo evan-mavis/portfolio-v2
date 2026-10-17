@@ -9,11 +9,12 @@ function isTreeState(value: unknown): value is TreeState {
   if (typeof value !== "object" || value === null) {
     return false;
   }
-  const candidate = value as Record<string, unknown>;
   return (
-    Array.isArray(candidate.expanded) &&
-    candidate.expanded.every((item) => typeof item === "string") &&
-    typeof candidate.allExpanded === "boolean"
+    "expanded" in value &&
+    Array.isArray(value.expanded) &&
+    value.expanded.every((item: unknown) => typeof item === "string") &&
+    "allExpanded" in value &&
+    typeof value.allExpanded === "boolean"
   );
 }
 
