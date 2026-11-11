@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+SECONDS=0
+
+echo "[setup ${SECONDS}s] Checking Node.js"
+node_major="$(tr -d '[:space:]' < .nvmrc)"
+if ! command -v node >/dev/null || [[ "$(node -p 'process.versions.node.split(".")[0]')" != "$node_major" ]]; then
+  case "$(uname -m)" in
+    x86_64) arch=x64 ;;
+    aarch64) arch=arm64 ;;
+    *) echo "Unsupported architecture: $(uname -m)" >&2; exit 1 ;;
+  esac
+  download_dir="$(mktemp -d)"
+  trap 'rm -rf "$download_dir"' EXIT
+  base_url="https://nodejs.org/dist/latest-v${node_major}.x"
+  curl -fsSL "$base_url/SHASUMS256.txt" -o "$download_dir/SHASUMS256.txt"
+  archive="$(awk -v suffix="-linux-${arch}.tar.xz" '$2 ~ (suffix "$") { print $2 }' "$download_dir/SHASUMS256.txt")"
+  test -n "$archive"
+  curl -fsSL "$base_url/$archive" -o "$download_dir/$archive"
+  (cd "$download_dir" && grep "  $archive$" SHASUMS256.txt | sha256sum --check -)
+  sudo tar -xJf "$download_dir/$archive" -C /usr/local --strip-components=1
+  hash -r
+fi
+node --version
+
+echo "[setup ${SECONDS}s] Checking pnpm"
+package_manager="$(node -p 'require("./package.json").packageManager')"
+if ! command -v pnpm >/dev/null || [[ "$(pnpm --version)" != "${package_manager#pnpm@}" ]]; then
+  sudo npm install --global "$package_manager"
+fi
+pnpm --version
+
+echo "[setup ${SECONDS}s] Installing locked dependencies"
+pnpm install --frozen-lockfile
+
+echo "[setup ${SECONDS}s] Preparing Playwright Chromium"
+chromium="$(node -e 'console.log(require("@playwright/test").chromium.executablePath())')"
+if [[ -x "$chromium" ]]; then
+  pnpm exec playwright install chromium
+else
+  pnpm exec playwright install --with-deps chromium
+fi
+
+echo "[setup ${SECONDS}s] Ready"

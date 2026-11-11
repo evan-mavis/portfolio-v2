@@ -53,3 +53,6 @@ next-env.d.ts
 .vscode/
 *.swp
 Thumbs.db
+
+# orb portal state
+.amp/portals/*
