@@ -13,6 +13,16 @@ pnpm run dev
 
 open [localhost:3000](http://localhost:3000). no env vars or services needed.
 
+## amp orbs
+
+`.agents/setup` installs node.js from `.nvmrc`, pnpm from `package.json`, locked
+dependencies, and playwright chromium with its system libraries. amp caches the
+prepared environment for fresh orbs; warm setup runs reuse the installed tools and
+packages. `.agents/resume` checks the tools and dependencies without reinstalling.
+
+Run `amp orb services ensure` to start the supervised dev server and get its portal
+link. `.amp/services.yaml` defines the server and its health check.
+
 ## check it
 
 - `pnpm run check` runs formatting, lint, types, and unit tests.

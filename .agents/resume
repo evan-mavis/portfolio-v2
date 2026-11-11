@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+echo "[resume] Checking toolchain and dependencies"
+node --version
+pnpm --version
+if [[ ! -d node_modules/.pnpm ]]; then
+  echo "Dependencies are missing; run .agents/setup to repair this orb." >&2
+  exit 1
+fi
